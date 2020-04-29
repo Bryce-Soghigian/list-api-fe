@@ -3,10 +3,17 @@ import "./Listitem.scss";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FcSettings } from "react-icons/fc";
 import {TiDelete} from 'react-icons/ti'
+import Axios from 'axios'
 
 export default function Listitem(props) {
   const [showState, setShowState] = useState("hide");
   const [open, setOpen] = useState(false);
+  const deleteAnime = () => {
+        let id = props.state.id
+      Axios.delete(`https://anime-list-api.herokuapp.com/list/${id}`)
+      console.log("deleted")
+      document.location.reload()
+  }
   const toggle = () => {
     setOpen(!open);
   };
@@ -19,7 +26,7 @@ export default function Listitem(props) {
       <button>
         <FcSettings />
       </button>
-      <button><TiDelete/></button>
+      <button onClick={deleteAnime}><TiDelete/></button>
       <div>
         {open ? (
           <>
