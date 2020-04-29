@@ -6,6 +6,7 @@ import './App.css';
 import Login from './components/Login/Login'
 import Signup from './components/Signup/Signup'
 import Main from './components/Main/Main'
+import AddAnime from './components/home/AddNewShow/AddAnime';
 function App() {
   const initialState = {
     isAuthenticated: false,
@@ -53,6 +54,7 @@ console.log("State",state)
         <div className="App">
         <Navbar/>
         <Route exact path="/" component={Main}/>
+        <Route exact path="/new" component={AddAnime}/>
         <Route exact path="/Login" component={Login}/>
         <Route exact path="/Signup" component={Signup}/>
 

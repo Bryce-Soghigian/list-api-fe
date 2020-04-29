@@ -27,9 +27,11 @@
 .nav-container::visted{
     color: #F42B4B;
 }
-.left-right{
+.left-nav{
     display: flex;
     justify-content: flex-start;
+    font-family: 'Roboto Condensed';
+    margin:1%;
 }
 .right-nav{
     display: flex;
