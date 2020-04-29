@@ -3,7 +3,7 @@
     width:75vw;
     margin:1%;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     border:2px solid black;
     // clip-path: polygon(4% 0, 100% 0%, 94% 100%, 0% 100%);    
     // color:white;
@@ -40,12 +40,15 @@
 }
 
 
-// Conditional state stuff
 
-.hide{
-    display:none; 
+.buttons-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 3em;
 }
-.show{
-    display:flex;
-    
+#button{
+    font-size: 1rem;
+    background:none;
+    color:black;
+    border:none;
 }

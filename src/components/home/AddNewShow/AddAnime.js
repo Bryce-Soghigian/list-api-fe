@@ -96,6 +96,8 @@ console.log(postBody)
                     <option value="seinen">seinen</option>
                     <option value="shounen">shounen</option>
                     <option value="supernatural">supernatural</option>
+                    <option value="romance">romance</option>
+                    <option value="sports">sports</option>
                 </select>
             </form>
             <div>

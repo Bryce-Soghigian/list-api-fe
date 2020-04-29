@@ -4,29 +4,30 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FcSettings } from "react-icons/fc";
 import {TiDelete} from 'react-icons/ti'
 import Axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default function Listitem(props) {
-  const [showState, setShowState] = useState("hide");
   const [open, setOpen] = useState(false);
-  const deleteAnime = () => {
+
+  //===
+
+  const  deleteAnime =async() => {
+    let r = window.confirm("Are you sure you would like to delete that item?")
+      if(r=== true){
         let id = props.state.id
-      Axios.delete(`https://anime-list-api.herokuapp.com/list/${id}`)
-      console.log("deleted")
-      document.location.reload()
+        await Axios.delete(`https://anime-list-api.herokuapp.com/list/${id}`)
+       console.log("deleted")
+       document.location.reload()
+      }
   }
   const toggle = () => {
     setOpen(!open);
   };
   return (
     <div className={props.state.rating}>
-      <p className="item">{props.state.listItem}</p>
-      <button onClick={toggle}>
-        <AiOutlineInfoCircle />
-      </button>
-      <button>
-        <FcSettings />
-      </button>
-      <button onClick={deleteAnime}><TiDelete/></button>
+        <div className="left">
+        <p className="item">{props.state.listItem}</p>
+      
       <div>
         {open ? (
           <>
@@ -45,6 +46,17 @@ export default function Listitem(props) {
         ) : (
           ""
         )}
+      </div>
+        </div>
+
+      <div className="buttons-container">
+      <button id="button" onClick={toggle}>
+        <AiOutlineInfoCircle />
+      </button>
+      <button id="button">
+        <FcSettings />
+      </button>
+      <button id="button" onClick={deleteAnime}><TiDelete/></button>
       </div>
       {/* <p>rating:{props.state.rating}</p>
     <p>genre:{props.state.genre}</p> */}
