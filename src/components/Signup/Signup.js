@@ -1,10 +1,100 @@
-import React from 'react'
+import React, { useState,useContext } from "react";
+import {UserContext } from '../../contexts/contexts'
+import {  useHistory,useLocation} from "react-router-dom"
+import axios from "axios";
+import "./Signup.css"
+export const Signup = () => {
+    const {dispatch} =useContext(UserContext)
+    let history = useHistory();
+  const initialState = {
+    username: "",
+    password: "",
+    isSubmitting: false,
+    errorMessage: null,
+  };
+  const [data, setData] = useState(initialState);
+  const handleInputChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setData({
+      ...data,
+      isSubmitting: true,
+      errorMessage: null,
+    });
 
-export default function Signup() {
-    
-    return (
-        <div>
+    let post_object = {
+        username:data.username,
+        password:data.password
+    };
+    axios.post("https://anime-list-api.herokuapp.com/user/signup", post_object)
+    .then(res => {
+            console.log(res,"res")
+            if(res.data.name === "error"){
+                setData({
+                    ...data,
+                    isSubmitting: false,
+                    errorMessage: res.data.detail
+                })
+            }else{
+                history.push("/Login")
+            }
             
+    }).catch(err => {
+        setData({
+            ...data,
+            isSubmitting: false,
+            errorMessage: err.message || err.statusText
+        })
+    })
+  };
+
+  return (
+    <div className="login-container">
+      <div className="card">
+        <div className="container">
+          <form>
+            <h1>Signup</h1>
+
+            <label htmlFor="username">
+              username
+              <input
+              placeholder="username"
+                type="text"
+                value={data.username}
+                onChange={handleInputChange}
+                name="username"
+                id="username"
+              />
+            </label>
+
+            <label htmlFor="password">
+              Password
+              <input
+               placeholder="password"
+                type="password"
+                value={data.password}
+                onChange={handleInputChange}
+                name="password"
+                id="password"
+              />
+            </label>
+            <div className="error-div">{data.errorMessage && (
+              <span className="form-error">{data.errorMessage}</span>
+            )}</div>
+
+
+            <button disabled={data.isSubmitting} onClick={handleSubmit}>
+              {data.isSubmitting ? "Loading..." : "Signup"}
+            </button>
+          </form>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
+export default Signup;

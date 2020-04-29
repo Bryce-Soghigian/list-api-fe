@@ -1,8 +1,13 @@
 import React, { useState,useContext } from "react";
 import {UserContext } from '../../contexts/contexts'
+import {  useHistory,useLocation} from "react-router-dom"
 import axios from "axios";
+import "./Login.css"
 export const Login = () => {
     const {dispatch} =useContext(UserContext)
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
   const initialState = {
     username: "",
     password: "",
@@ -36,6 +41,7 @@ export const Login = () => {
             type:"LOGIN",
             payload: value
         })
+        history.replace(from)
 
     }).catch(err => {
         setData({
@@ -56,6 +62,7 @@ export const Login = () => {
             <label htmlFor="username">
               username
               <input
+              placeholder="username"
                 type="text"
                 value={data.username}
                 onChange={handleInputChange}
@@ -67,6 +74,7 @@ export const Login = () => {
             <label htmlFor="password">
               Password
               <input
+               placeholder="password"
                 type="password"
                 value={data.password}
                 onChange={handleInputChange}
@@ -74,10 +82,10 @@ export const Login = () => {
                 id="password"
               />
             </label>
-
-            {data.errorMessage && (
+            <div className="error-div">{data.errorMessage && (
               <span className="form-error">{data.errorMessage}</span>
-            )}
+            )}</div>
+
 
             <button disabled={data.isSubmitting} onClick={handleSubmit}>
               {data.isSubmitting ? "Loading..." : "Login"}

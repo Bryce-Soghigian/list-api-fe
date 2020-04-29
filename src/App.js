@@ -1,8 +1,10 @@
 import React,{useReducer} from 'react';
+import {Route,Redirect} from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import {UserContext} from './contexts/contexts'
 import './App.css';
 import Login from './components/Login/Login'
+import Signup from './components/Signup/Signup'
 import Main from './components/Main/Main'
 function App() {
   const initialState = {
@@ -12,8 +14,13 @@ function App() {
 
   const reducer = (state, action) => {
     switch (action.type) {
+      case "SIGNUP":
+        return{
+          ...state
+        }
       case "LOGIN":
         localStorage.setItem("user_id", JSON.stringify(action.payload.user_id));
+        localStorage.setItem("user_state",JSON.stringify(action.payload))
         localStorage.setItem("token", JSON.stringify(action.payload.token));
         return {
           ...state,
@@ -36,18 +43,19 @@ function App() {
 
 console.log("State",state)
   return (
-
   <UserContext.Provider
   value={{
     state,
     dispatch
   }}
   >
+
         <div className="App">
         <Navbar/>
-        <div>
-        {!state.isAuthenticated ? <Login/> : <Main/>}
-        </div>
+        <Route exact path="/" component={Main}/>
+        <Route exact path="/Login" component={Login}/>
+        <Route exact path="/Signup" component={Signup}/>
+
         </div>
   </UserContext.Provider>
 
