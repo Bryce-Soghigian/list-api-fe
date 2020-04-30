@@ -15,3 +15,10 @@
 
     
 }
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.center:hover{
+    color:red;
+}

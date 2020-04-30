@@ -30,7 +30,6 @@ export default function Home() {
         let F = [];
         let map_array = Array.from(res.data);
         map_array.map((item) => {
-          console.log(item, "current item");
           if (item.rating === "S") {
             S.push(item);
           }
@@ -95,7 +94,12 @@ export default function Home() {
   if (localState.length === 0 || sorting === true) {
     return (
       <div>
-        <p>Rendering your anime list</p>
+        <p>Your anime list</p>
+        <div className="item-container">
+            <Link to="/new">
+              <AiFillPlusCircle />
+            </Link>
+          </div>
       </div>
     );
   }
@@ -138,6 +142,10 @@ export default function Home() {
             <option value="D">D</option>
             <option value="F">F</option>
           </select>
+          <div className="center"><Link to="/new">
+              <AiFillPlusCircle />
+            </Link></div>
+
         </div>
 
         <h3>{errorState}</h3>

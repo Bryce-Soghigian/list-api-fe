@@ -1,38 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext,useState } from 'react'
+import { UserContext } from '../../../contexts/contexts'
 import {Link} from 'react-router-dom'
-import Axios from 'axios'
-export default function AddAnime() {
-  let id = localStorage.getItem("user_id");
-  const initialState = {
-    listItem: "",
-    description: "",
-    rating: "",
-    genre: "",
-    userId: id,
-  };
-  const [postBody, setPostBody] = useState(initialState);
-  const [message,setMessage] = useState("")
-  const [submitting,setSubmitting] = useState(false)
-const handleSubmit = e => {
-    setSubmitting(true)
-    Axios.post("https://anime-list-api.herokuapp.com/list/",postBody)
-    .then(res =>{
-        if(res.data){
-            setMessage(`Successfully Posted ${postBody.listItem}`)
-            setSubmitting(false)
-        }
-        
-    }).catch(err => {
-        setMessage(JSON.stringify(err))
-        setSubmitting(false)
+import Axios from 'axios';
+export default function UpdateShow() {
+    let id = localStorage.getItem("user_id");
+    const initialState = {
+      listItem: "",
+      description: "",
+      rating: "",
+      genre: "",
+      userId: id,
+    };
+    const [postBody, setPostBody] = useState(initialState);
+    console.log(postBody)
+    const [message,setMessage] = useState("")
+    const [submitting,setSubmitting] = useState(false)
+const {state} = useContext(UserContext)
+// console.log(state.UPDATE_ITEM, "state in context")
+
+//===========Functions================
+const setDefaultRating = e => {
+    e.nativeEvent.stopImmediatePropagation();
+    return setPostBody({
+        ...postBody,
+        rating: state.UPDATE_ITEM.rating
     })
-    setPostBody({
-        listItem: "",
-        description: "",
-        rating: "",
-        genre: "",
-        userId: id,
+}
+const setDefaultDescription = (e) =>{
+    e.preventDefault()
+    return setPostBody({
+        ...postBody,
+        description: state.UPDATE_ITEM.description
     })
+}
+const setDefaultTitle = (e) => {
+    e.preventDefault()
+    return setPostBody({
+        ...postBody,
+        listItem: state.UPDATE_ITEM.listItem
+    })
+}
+const setDefaultGenre = e => {
+    e.preventDefault()
+    return setPostBody({
+        ...postBody,
+        genre: state.UPDATE_ITEM.genre
+    })
+}
+const handleSubmit = (e) => {
+    Axios.update("")
 }
 const handleInput = e => {
     setPostBody({
@@ -53,26 +69,20 @@ const handleGenre = e => {
         genre: e.target.value
     })
 }
-console.log(postBody)
-  return(
-      <div>
-            <form id="add">
-                <h1>Add New Show</h1>
-                <h3>Title</h3>
-                <input
-                value={postBody.listItem}
-                onChange={handleInput}
-                name="listItem"
-                id="listItem"
-                />
-                <h3>description</h3>
-                <input
-                value={postBody.description}
-                onChange={handleInput}
-                name="description"
-                id="description"
-                />
-                <h3>Ranking</h3>
+if(state.UPDATE_ITEM !== null){
+    return (
+        <div>
+            <h3>Update {state.UPDATE_ITEM.listItem}</h3>
+            <form>
+                <h3>Update Name</h3>
+                <input name="listItem" onChange={handleInput}  value={postBody.listItem}/>
+                <button onClick={setDefaultTitle}>Set To Original Value</button>
+
+                <h3>Update Description</h3>
+                
+                <textarea name="description" onChange={handleInput} value={postBody.description}/>
+                <button onClick={setDefaultDescription}>Set To Original Value</button>
+                <h3>Update Rank</h3>
                 <select onChange={handleTier}>
                     <option>Select A Tier</option>
                     <option value="S">S</option>
@@ -82,7 +92,8 @@ console.log(postBody)
                     <option value="D">D</option>
                     <option value="F">F</option>
                 </select>
-                <h3>Primary Genre</h3>
+                {/* <button onChange={setDefaultRating}>Set To Original Tier</button> */}
+                <h3>Update Genre</h3>
                 <select onChange={handleGenre}>
                     <option>PIck A Genre</option>
                     <option value="action">action</option>
@@ -106,17 +117,19 @@ console.log(postBody)
                     <option value="romance">romance</option>
                     <option value="sports">sports</option>
                 </select>
+                {/* <button onClick={setDefaultGenre}>Set genre to Original Genre</button> */}
+
             </form>
-            <div>
             {postBody.listItem !== "" && postBody.description !=="" && postBody.genre !=="" && postBody.rating !==""? <button className="submit-btn" onClick={handleSubmit}>Submit Anime</button>: <button disabled>Submit Anime</button>}
-            </div>
-            <div>
-                {submitting?<p>Submitting...</p>:""}
-            </div>
-            <div>
-  <p>{message}</p>
-            </div>
-            <div><Link to="/">Back To My List</Link></div>
-      </div>
-  )
+        </div>
+    )
+}else{
+    return (
+        <div>
+            <h1>PLEASE GO BACK TO THE MAIN PAGE AND SELECT IT AGAIN</h1>
+            <Link to="/">Home</Link>
+        </div>
+    )
+}
+
 }
