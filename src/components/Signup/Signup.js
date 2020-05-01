@@ -1,10 +1,8 @@
-import React, { useState,useContext } from "react";
-import {UserContext } from '../../contexts/contexts'
-import {  useHistory,useLocation} from "react-router-dom"
+import React, { useState } from "react";
+import {  useHistory} from "react-router-dom"
 import axios from "axios";
 import "./Signup.css"
 export const Signup = () => {
-    const {dispatch} =useContext(UserContext)
     let history = useHistory();
   const initialState = {
     username: "",

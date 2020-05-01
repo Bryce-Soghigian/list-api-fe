@@ -9,8 +9,16 @@
     width:75vw;
     margin:1%;
     align-items: center;
+    color:rgb(244,43,75);
     justify-content: space-around;
     border:2px solid #F42B4B;
 
     
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.center:hover{
+    color:red;
 }

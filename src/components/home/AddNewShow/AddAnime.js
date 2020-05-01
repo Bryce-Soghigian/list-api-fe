@@ -26,13 +26,20 @@ const handleSubmit = e => {
         setMessage(JSON.stringify(err))
         setSubmitting(false)
     })
-
+    setPostBody({
+        listItem: "",
+        description: "",
+        rating: "",
+        genre: "",
+        userId: id,
+    })
 }
 const handleInput = e => {
     setPostBody({
         ...postBody,
-        [e.target.name]: e.target.value
+            [e.target.name]: e.target.value
     })
+
 }
 const handleTier = e => {
     return setPostBody({
@@ -49,7 +56,7 @@ const handleGenre = e => {
 console.log(postBody)
   return(
       <div>
-            <form>
+            <form id="add">
                 <h1>Add New Show</h1>
                 <h3>Title</h3>
                 <input
@@ -96,6 +103,8 @@ console.log(postBody)
                     <option value="seinen">seinen</option>
                     <option value="shounen">shounen</option>
                     <option value="supernatural">supernatural</option>
+                    <option value="romance">romance</option>
+                    <option value="sports">sports</option>
                 </select>
             </form>
             <div>
@@ -107,7 +116,7 @@ console.log(postBody)
             <div>
   <p>{message}</p>
             </div>
-            <div><Link to="/">Home</Link></div>
+            <div><Link to="/">Back To My List</Link></div>
       </div>
   )
 }

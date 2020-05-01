@@ -5,7 +5,8 @@ a:-webkit-any-link {
   text-transform: uppercase;
 }
 a:-webkit-any-link:hover{
-  color:#fcbf1e;
+  color:black;
+  transform:scale(1.3);
   transition: .5s;
   text-decoration: underline;
 
