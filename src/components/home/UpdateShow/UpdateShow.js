@@ -3,20 +3,19 @@ import { UserContext } from '../../../contexts/contexts'
 import {Link} from 'react-router-dom'
 import Axios from 'axios';
 export default function UpdateShow() {
-    let id = localStorage.getItem("user_id");
     const initialState = {
       listItem: "",
       description: "",
       rating: "",
-      genre: "",
-      userId: id,
+      genre: ""
     };
     const [postBody, setPostBody] = useState(initialState);
     console.log(postBody)
     const [message,setMessage] = useState("")
     const [submitting,setSubmitting] = useState(false)
 const {state} = useContext(UserContext)
-// console.log(state.UPDATE_ITEM, "state in context")
+console.log(state.UPDATE_ITEM, "state in context")
+
 
 //===========Functions================
 const setDefaultRating = e => {
@@ -48,7 +47,15 @@ const setDefaultGenre = e => {
     })
 }
 const handleSubmit = (e) => {
-    Axios.update("")
+    let current_id = state.UPDATE_ITEM.id
+    console.log(current_id,"Id")
+    Axios.put(`https://anime-list-api.herokuapp.com/list/${current_id}`,postBody)
+    .then( res => {
+        console.log(res.data)
+        setMessage(`successfully updated ${state.UPDATE_ITEM.listItem}`)
+    }).catch(err => {
+        setMessage(err)
+    })
 }
 const handleInput = e => {
     setPostBody({
@@ -70,6 +77,8 @@ const handleGenre = e => {
     })
 }
 if(state.UPDATE_ITEM !== null){
+    // let current_id = state.UPDATE_ITEM.id
+
     return (
         <div>
             <h3>Update {state.UPDATE_ITEM.listItem}</h3>
@@ -121,6 +130,8 @@ if(state.UPDATE_ITEM !== null){
 
             </form>
             {postBody.listItem !== "" && postBody.description !=="" && postBody.genre !=="" && postBody.rating !==""? <button className="submit-btn" onClick={handleSubmit}>Submit Anime</button>: <button disabled>Submit Anime</button>}
+    <div>{message}</div>
+    <div><Link to="/">BACK TO MY LIST</Link></div>
         </div>
     )
 }else{
