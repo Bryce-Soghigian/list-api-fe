@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
+import "./Add.scss"
 export default function AddAnime() {
   let id = localStorage.getItem("user_id");
   const initialState = {
@@ -55,25 +56,36 @@ const handleGenre = e => {
 }
 console.log(postBody)
   return(
-      <div>
+      <div className="center-add-plus-red">
             <form id="add">
+              <div className = "center-add-plus-red">
+                <div className="input-within-add">
                 <h1>Add New Show</h1>
-                <h3>Title</h3>
+                </div>
+             
+              <div className="input-within-add">
+              <h3 >Title</h3>
                 <input
+                // className="input-within-add"
                 value={postBody.listItem}
                 onChange={handleInput}
                 name="listItem"
                 id="listItem"
                 />
-                <h3>description</h3>
+              </div>
+
+              <div className="input-within-add">
+              <h3>description</h3>
                 <input
                 value={postBody.description}
                 onChange={handleInput}
                 name="description"
                 id="description"
                 />
-                <h3>Ranking</h3>
-                <select onChange={handleTier}>
+              </div>
+              <div className="input-within-add">
+              <h3>Ranking</h3>
+                <select onChange={handleTier} className="select-class">
                     <option>Select A Tier</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -82,8 +94,10 @@ console.log(postBody)
                     <option value="D">D</option>
                     <option value="F">F</option>
                 </select>
-                <h3>Primary Genre</h3>
-                <select onChange={handleGenre}>
+              </div>
+              <div className="input-within-add">
+              <h3>Primary Genre</h3>
+                <select onChange={handleGenre} className="select-class">
                     <option>PIck A Genre</option>
                     <option value="action">action</option>
                     <option value="adventure">adventure</option>
@@ -106,6 +120,9 @@ console.log(postBody)
                     <option value="romance">romance</option>
                     <option value="sports">sports</option>
                 </select>
+              </div>
+
+                </div>
             </form>
             <div>
             {postBody.listItem !== "" && postBody.description !=="" && postBody.genre !=="" && postBody.rating !==""? <button className="submit-btn" onClick={handleSubmit}>Submit Anime</button>: <button disabled>Submit Anime</button>}
@@ -116,7 +133,7 @@ console.log(postBody)
             <div>
   <p>{message}</p>
             </div>
-            <div><Link to="/">Back To My List</Link></div>
+            <div><Link to="/" className="white">Back To My List</Link></div>
       </div>
   )
 }
