@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import Listitem from "./Listitem";
 import "./main.css";
 import { Link } from "react-router-dom";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { UserContext } from "../../contexts/contexts";
 export default function Home() {
   const [errorState, setError] = useState("");
   const [localState, setLocal] = useState([]);
-  const [sortedState, setSorted] = useState();
+  const [sucessful_get,set_sucessful_get] = useState(false)
+  const [sortedState, setSorted] = useState([]);
   const [sorting, setSorting] = useState(false);
+  const {state} = useContext(UserContext)
+  console.log(state,"state in home")
   useEffect(() => {
     let id = localStorage.getItem("user_id");
     //Gets users anime list
@@ -18,7 +22,7 @@ export default function Home() {
         //merge subarrays and set state as sorted value
 
         console.log(res.data, "user items");
-
+        set_sucessful_get(true)
         // let result = []
         // result.concat(S,A)
         setSorting(true);
@@ -52,6 +56,7 @@ export default function Home() {
         let cur_state = Array.from(S.concat(A, B, C, D, F));
         setLocal(cur_state);
         setSorted(cur_state);
+    
         setSorting(false);
       })
       .catch((err) => {
@@ -89,12 +94,13 @@ export default function Home() {
 
     setSorted(new_state);
     setSorting(false);
-
   };
-  if (localState.length === 0 || sorting === true) {
+  
+  if (localState.length === 0 && sucessful_get === true) {
+    console.log(localState.length)
     return (
-      <div>
-        <p>Your anime list</p>
+      <div className="center">
+        <p className="no-items">Please add a show to your list</p>
         <div className="item-container">
             <Link to="/new">
               <AiFillPlusCircle />
@@ -102,7 +108,19 @@ export default function Home() {
           </div>
       </div>
     );
-  }
+  }else if(localState.length === 0 && sucessful_get === false){
+    console.log(localState.length,sucessful_get)
+    return(
+      <div>
+      <p>rendering your anime list</p>
+      <div className="item-container">
+          <Link to="/new">
+            <AiFillPlusCircle />
+          </Link>
+        </div>
+    </div>
+    )
+  }else{
   return (
     <div>
       <div className="top">
@@ -162,4 +180,5 @@ export default function Home() {
       </div>
     </div>
   );
+}
 }
