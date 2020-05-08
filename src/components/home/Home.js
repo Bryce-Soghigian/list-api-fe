@@ -8,21 +8,20 @@ import { UserContext } from "../../contexts/contexts";
 export default function Home() {
   const [errorState, setError] = useState("");
   const [localState, setLocal] = useState([]);
-  const [sucessful_get,set_sucessful_get] = useState(false)
+  const [sucessful_get, set_sucessful_get] = useState(false);
   const [sortedState, setSorted] = useState([]);
   const [sorting, setSorting] = useState(false);
-  const {state} = useContext(UserContext)
-  console.log(state,"state in home")
+
+
   useEffect(() => {
-    let id = localStorage.getItem("user_id");
     //Gets users anime list
-    Axios.get(`https://anime-list-api.herokuapp.com/list/${id}`)
+    let user_id = localStorage.getItem("user_id")
+    Axios.get(`https://anime-list-api.herokuapp.com/list/${user_id}`)
       .then((res) => {
         // map through array. push all the values into subarrays
         //merge subarrays and set state as sorted value
 
-        console.log(res.data, "user items");
-        set_sucessful_get(true)
+        set_sucessful_get(true);
         // let result = []
         // result.concat(S,A)
         setSorting(true);
@@ -56,7 +55,7 @@ export default function Home() {
         let cur_state = Array.from(S.concat(A, B, C, D, F));
         setLocal(cur_state);
         setSorted(cur_state);
-    
+
         setSorting(false);
       })
       .catch((err) => {
@@ -68,7 +67,7 @@ export default function Home() {
 
     let new_state = [];
     localState.map((x) => {
-      console.log("SORTING");
+
       if (e.target.value === x.genre) {
         new_state.push(x);
       }
@@ -83,102 +82,103 @@ export default function Home() {
   const FilterByTier = (e) => {
     setSorting(true);
     let new_state = [];
-    localState.map((x => {
-        if(e.target.value === x.rating){
-            new_state.push(x)
-        }
-        if(e.target.value === "all"){
-            new_state.push(x)
-        }
-    }))
+    localState.map((x) => {
+      if (e.target.value === x.rating) {
+        new_state.push(x);
+      }
+      if (e.target.value === "all") {
+        new_state.push(x);
+      }
+    });
 
     setSorted(new_state);
     setSorting(false);
   };
-  
+
   if (localState.length === 0 && sucessful_get === true) {
-    console.log(localState.length)
     return (
       <div className="center">
         <p className="no-items">Please add a show to your list</p>
         <div className="item-container">
-            <Link to="/new">
-              <AiFillPlusCircle />
-            </Link>
-          </div>
-      </div>
-    );
-  }else if(localState.length === 0 && sucessful_get === false){
-    console.log(localState.length,sucessful_get)
-    return(
-      <div>
-      <p>rendering your anime list</p>
-      <div className="item-container">
           <Link to="/new">
             <AiFillPlusCircle />
           </Link>
         </div>
-    </div>
-    )
-  }else{
-  return (
-    <div>
-      <div className="top">
-        <div>
-          <h3>My Anime List(List currently contains {sortedState.length} items)</h3>
-          <select onChange={FilterByGenre}>
-            <option>Filter By Genre</option>
-            <option value="all">All</option>
-            <option value="action">action</option>
-            <option value="adventure">adventure</option>
-            <option value="comedy">comedy</option>
-            <option value="drama">drama</option>
-            <option value="ecchi">ecchi</option>
-            <option value="fantasy">fantasy</option>
-            <option value="game">game</option>
-            <option value="harem">harem</option>
-            <option value="historical">historical</option>
-            <option value="horror">horror</option>
-            <option value="magic">magic</option>
-            <option value="mystery">mystery</option>
-            <option value="psychological">psychological</option>
-            <option value="school">school</option>
-            <option value="slice of life">slice of life</option>
-            <option value="romance">romance</option>
-            <option value="seinen">seinen</option>
-            <option value="shounen">shounen</option>
-            <option value="supernatural">supernatural</option>
-            <option value="sports">sports</option>
-          </select>
-          <select onChange={FilterByTier}>
-            <option>Filter By Tier</option>
-            <option value="all">All</option>
-            <option value="S">S</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="F">F</option>
-          </select>
-          <div className="center"><Link to="/new">
-              <AiFillPlusCircle />
-            </Link></div>
-
+      </div>
+    );
+  } else if (localState.length === 0 && sucessful_get === false) {
+    return (
+      <div>
+        <p>rendering your anime list</p>
+        <div className="item-container">
+          <Link to="/new">
+            <AiFillPlusCircle />
+          </Link>
         </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div className="top">
+          <div>
+            <h3>
+              My Anime List(List currently contains {sortedState.length} items)
+            </h3>
+            <select onChange={FilterByGenre}>
+              <option disabled>Filter By Genre</option>
+              <option value="all">All</option>
+              <option value="action">action</option>
+              <option value="adventure">adventure</option>
+              <option value="comedy">comedy</option>
+              <option value="drama">drama</option>
+              <option value="ecchi">ecchi</option>
+              <option value="fantasy">fantasy</option>
+              <option value="game">game</option>
+              <option value="harem">harem</option>
+              <option value="historical">historical</option>
+              <option value="horror">horror</option>
+              <option value="magic">magic</option>
+              <option value="mystery">mystery</option>
+              <option value="psychological">psychological</option>
+              <option value="school">school</option>
+              <option value="slice of life">slice of life</option>
+              <option value="romance">romance</option>
+              <option value="seinen">seinen</option>
+              <option value="shounen">shounen</option>
+              <option value="supernatural">supernatural</option>
+              <option value="sports">sports</option>
+            </select>
+            <select onChange={FilterByTier}>
+              <option disabled>Filter By Tier</option>
+              <option value="all">All</option>
+              <option value="S">S</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="F">F</option>
+            </select>
+            <div className="center">
+              <Link to="/new">
+                <AiFillPlusCircle />
+              </Link>
+            </div>
+          </div>
 
-        <h3>{errorState}</h3>
-        <div className="list-items">
-          {sortedState.map((x) => {
-            return <Listitem state={x} />;
-          })}
-          <div className="item-container">
-            <Link to="/new">
-              <AiFillPlusCircle />
-            </Link>
+          <h3>{errorState}</h3>
+          <div className="list-items">
+            {sortedState.map((x) => {
+              return <Listitem state={x} />;
+            })}
+            <div className="item-container">
+              <Link to="/new">
+                <AiFillPlusCircle />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }

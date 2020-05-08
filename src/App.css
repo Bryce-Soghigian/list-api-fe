@@ -6,7 +6,7 @@ a:-webkit-any-link {
 }
 a:-webkit-any-link:hover{
   color:black;
-  transform:scale(1.3);
+  transform:scale(1.1);
   transition: .5s;
   text-decoration: underline;
 

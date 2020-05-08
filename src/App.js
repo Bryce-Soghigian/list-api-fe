@@ -1,18 +1,29 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { UserContext, UpdateContext } from "./contexts/contexts";
+import { PrivateRoute } from "./secrets/PrivateRoute";
 import "./App.css";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Main from "./components/Main/Main";
 import AddAnime from "./components/home/AddNewShow/AddAnime";
 import UpdateShow from "./components/home/UpdateShow/UpdateShow";
+import FriendsHome from "./components/friends/FriendsHome";
+import Global from "./components/global/Global";
 function App() {
+  //Removing token when user unloads the page via refresh
+  window.onbeforeunload = function () {
+    localStorage.clear();
+  };
+
   const initialState = {
     isAuthenticated: false,
+    username: null,
     user: null,
-    UPDATE_ITEM: null
+    UPDATE_ITEM: null,
+    userList: null,
+    friendMessage: "",
   };
 
   const reducer = (state, action) => {
@@ -21,15 +32,14 @@ function App() {
         return {
           ...state,
         };
-
       case "LOGIN":
         localStorage.setItem("user_id", JSON.stringify(action.payload.user_id));
-        localStorage.setItem("user_state", JSON.stringify(action.payload));
         localStorage.setItem("token", JSON.stringify(action.payload.token));
         return {
           ...state,
           isAuthenticated: true,
           user: action.payload,
+          username: action.payload.username,
         };
       case "LOGOUT":
         localStorage.clear();
@@ -50,21 +60,20 @@ function App() {
           ...state,
           current_tier: action.payload.toString(),
         };
-      // case "TIER_SUBMITTING":
-      //   return {
-      //     ...state,
-      //     TIER_SUBMITTING: true,
-      //   };
-      // case "TIER_SUBMITTED":
-      //   return {
-      //     ...state,
-      //     current_tier: null,
-      //     TIER_SUBMITTING: false,
-        // };
       case "genre_update":
         return {
           ...state,
           current_genre: action.payload,
+        };
+      case "fetching_user_data":
+        return {
+          ...state,
+          userList: action.payload,
+        };
+      case "send_friend_request":
+        return {
+          ...state,
+          friendMessage: action.payload,
         };
       default:
         return state;
@@ -83,11 +92,13 @@ function App() {
       <UpdateContext.Provider>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Main} />
-          <Route exact path="/update" component={UpdateShow} />
-          <Route exact path="/new" component={AddAnime} />
+          <PrivateRoute exact path="/" component={Main} />
+          <PrivateRoute exact path="/update" component={UpdateShow} />
+          <PrivateRoute exact path="/new" component={AddAnime} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
+          <PrivateRoute exact path="/Global" component={Global} />
+          <PrivateRoute exact path="/friends" component={FriendsHome} />
         </div>
       </UpdateContext.Provider>
     </UserContext.Provider>
