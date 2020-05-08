@@ -1,12 +1,14 @@
 import React from 'react'
 import SearchForFriends from './Search/SearchForFriends'
 import ViewFriendRequests from './ViewFriendRequests/ViewFriendRequests'
+import MyFriendsList from './MyFriendsList/MyFriendsList'
 import "./Friends.css"
 export default function FriendsHome() {
     return (
         <div className="friends-main-container">
             <SearchForFriends/>
             <ViewFriendRequests />
+            <MyFriendsList />
         </div>
     )
 }

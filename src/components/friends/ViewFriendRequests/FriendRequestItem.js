@@ -47,7 +47,7 @@ export default function FriendRequestItem(props) {
   } else {
     return (
       <div className="friend-request-item-container">
-        <p>Request from:{props.state.friend_username}</p>
+        <p>Request from:{props.state.my_username}</p>
         <div className="button-container-friend">
           <button onClick={UpdateFriendRequest} id="accepted">{statusAccept}</button>
           {statusAccept === "Accepted" ? (
