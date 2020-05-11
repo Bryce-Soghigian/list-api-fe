@@ -143,7 +143,7 @@ export default function Home() {
               <option value="supernatural">supernatural</option>
               <option value="sports">sports</option>
             </select>
-            <select className="select-class" onChange={FilterByTier}>
+            <select className="select-class-home" onChange={FilterByTier}>
               <option disabled>Filter By Tier</option>
               <option value="all">All</option>
               <option value="S">S</option>

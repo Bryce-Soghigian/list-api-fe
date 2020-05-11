@@ -16,8 +16,15 @@
 
     
 }
-.select-class{
-
+.select-class-home{
+    border-radius:5px;
+    border-style:solid;
+    border-color:#F42B4B;
+     background:black;
+     color:white;
+    cursor: pointer;
+    margin-right:2.5px;
+    margin-left:2.5px
 }
 .home-primary-container{
     background:#e8e8e8;
