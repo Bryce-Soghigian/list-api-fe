@@ -1,31 +1,34 @@
-import React from "react";
-import { Link,useHistory } from "react-router-dom";
-import "./nav.css"
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../../contexts/contexts";
+import "./nav.css";
 export default function Navbar() {
-let history = useHistory();
+  let { state } = useContext(UserContext);
+  let history = useHistory();
   let token = localStorage.getItem("token");
-const clearLocalStorage = ()  => {
-    history.push("/Login")
-    return localStorage.clear()
-}
+  const clearLocalStorage = () => {
+    history.push("/Login");
+    return localStorage.clear();
+  };
   if (token) {
-    let user_state = localStorage.getItem("user_state");
-    user_state = JSON.parse(user_state);
-    console.log(user_state.user_id, "state in nav");
     return (
       <div className="nav-container">
-        <div className="left-nav">Welcome {user_state.username}</div>
-        <div className="right-nav"><button onClick={clearLocalStorage} className="button">Logout</button></div>
+        <div className="left-nav">Welcome {state.username}</div>
+        <div className="right-nav">
+          <Link to="/">Home</Link>
+          <Link to="/Friends">Social</Link>
+          <Link to="/global">Global</Link>
+          <button onClick={clearLocalStorage} className="button">
+            Logout
+          </button>
+        </div>
       </div>
     );
   } else {
     return (
       <div className="nav-container-login">
-
-
-            <Link to="/Signup">Signup</Link>
-            <Link to ="/Login">Login</Link>
-
+        <Link to="/Signup">Signup</Link>
+        <Link to="/Login">Login</Link>
       </div>
     );
   }

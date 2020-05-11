@@ -1,13 +1,13 @@
-import React, { useState,useContext } from "react";
-import {UserContext } from '../../contexts/contexts'
-import {  useHistory,useLocation} from "react-router-dom"
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../contexts/contexts";
+import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
-import "./Login.css"
+import "./Login.css";
 export const Login = () => {
-    const {dispatch} =useContext(UserContext)
-    let history = useHistory();
-    let location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+  const { dispatch } = useContext(UserContext);
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
   const initialState = {
     username: "",
     password: "",
@@ -30,26 +30,26 @@ export const Login = () => {
     });
 
     let post_object = {
-        username:data.username,
-        password:data.password
+      username: data.username,
+      password: data.password,
     };
-    axios.post("https://anime-list-api.herokuapp.com/user/login", post_object)
-    .then(res => {
-        console.log(res.data)
-        let value = res.data
+    axios
+      .post("https://anime-list-api.herokuapp.com/user/login", post_object)
+      .then((res) => {
+        let value = res.data;
         dispatch({
-            type:"LOGIN",
-            payload: value
-        })
-        history.replace(from)
-
-    }).catch(err => {
+          type: "LOGIN",
+          payload: value,
+        });
+        history.replace(from);
+      })
+      .catch((err) => {
         setData({
-            ...data,
-            isSubmitting: false,
-            errorMessage: err.message || err.statusText
-        })
-    })
+          ...data,
+          isSubmitting: false,
+          errorMessage: err.message || err.statusText,
+        });
+      });
   };
 
   return (
@@ -60,9 +60,9 @@ export const Login = () => {
             <h1>Login</h1>
 
             <label htmlFor="username">
-              username
+              Username
               <input
-              placeholder="username"
+                placeholder="username"
                 type="text"
                 value={data.username}
                 onChange={handleInputChange}
@@ -74,7 +74,7 @@ export const Login = () => {
             <label htmlFor="password">
               Password
               <input
-               placeholder="password"
+                placeholder="password"
                 type="password"
                 value={data.password}
                 onChange={handleInputChange}
@@ -82,10 +82,11 @@ export const Login = () => {
                 id="password"
               />
             </label>
-            <div className="error-div">{data.errorMessage && (
-              <span className="form-error">{data.errorMessage}</span>
-            )}</div>
-
+            <div className="error-div">
+              {data.errorMessage && (
+                <span className="form-error">{data.errorMessage}</span>
+              )}
+            </div>
 
             <button disabled={data.isSubmitting} onClick={handleSubmit}>
               {data.isSubmitting ? "Loading..." : "Login"}

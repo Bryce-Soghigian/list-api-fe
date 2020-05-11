@@ -1,0 +1,28 @@
+/* .friends-main-container{
+    height:93vh;
+    width: 50vw;
+    color:white;
+    background-color:rgb(244,43,75) ;
+} */
+
+
+.search-in-friends{
+    width:80%;
+    border: 2px solid black;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px red;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    outline: none;
+}
+
+.autocomplete-container{
+    height:15vh;
+    margin-top: 20px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+
+}

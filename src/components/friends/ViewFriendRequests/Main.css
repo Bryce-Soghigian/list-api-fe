@@ -1,0 +1,45 @@
+.view-friend-request-scrollable-div{
+     height:93vh;
+    width: 50vw; 
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.friend-request-item-container{
+    border: black 2px solid;
+    width:75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.button-container-friend{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#accepted{
+    margin: .5em;
+    background-color: rgb(127,255,127);
+    color:black;
+    border: black 2px solid;
+    padding:2px;
+}
+
+#accepted:hover{
+    transform:scale(1.1);
+    transition: .5s;
+}
+#deny {
+    margin: .5em;
+    border: black 2px solid;
+    background-color: white;
+    color: black
+}
+#deny:hover{
+    transform:scale(1.1);
+    transition: .5s;  
+}

@@ -8,14 +8,11 @@
     // clip-path: polygon(4% 0, 100% 0%, 94% 100%, 0% 100%);    
     // color:white;
 }
+
 .item{
-    color:black;
-    
-    // text-shadow: black 3px 3px;
     margin:1%;
     font-family: 'Roboto Condensed';
 }
-
 .F{
     @include item-div-class();
     background:#FF7F7F;
@@ -41,18 +38,4 @@
 .S{
     @include item-div-class();
     background-color: rgb(127,255,127);
-}
-
-
-
-.buttons-container{
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 3em;
-}
-#button{
-    font-size: 1rem;
-    background:none;
-    color:black;
-    border:none;
 }
