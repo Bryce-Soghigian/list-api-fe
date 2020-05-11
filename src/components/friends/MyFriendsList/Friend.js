@@ -3,7 +3,7 @@ import {UserContext} from '../../../contexts/contexts'
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
 export default function Friend(props) {
-    const {dispatch,state} = useContext(UserContext)
+    const {dispatch} = useContext(UserContext)
     
     const fetchUserList = () => {
         Axios.get(`https://anime-list-api.herokuapp.com/list/${props.state.my_id}`)
@@ -22,7 +22,7 @@ export default function Friend(props) {
     return (
         <div>
             <p>{props.state.my_username}</p>
-            <button onClick={fetchUserList}><Link to="/CurrentFriend">View Friends List</Link></button>
+            <button onClick={fetchUserList}><Link to="/CurrentFriend">{`View ${props.state.my_username}\'s List`}</Link></button>
         </div>
     )
 }

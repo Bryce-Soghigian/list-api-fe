@@ -5,9 +5,12 @@ a:-webkit-any-link {
   text-transform: uppercase;
 }
 a:-webkit-any-link:hover{
-  color:black;
+  color:white;
   transform:scale(1.1);
   transition: .5s;
   text-decoration: underline;
 
+}
+body{
+  background:#e8e8e8;
 }

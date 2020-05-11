@@ -9,9 +9,13 @@
     // color:white;
 }
 .item{
+    color:black;
+    
+    // text-shadow: black 3px 3px;
     margin:1%;
     font-family: 'Roboto Condensed';
 }
+
 .F{
     @include item-div-class();
     background:#FF7F7F;

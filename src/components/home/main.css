@@ -5,6 +5,7 @@
     align-items: center;
 }
 .item-container{
+
     display: flex;
     width:75vw;
     margin:1%;
@@ -15,6 +16,13 @@
 
     
 }
+.select-class{
+
+}
+.home-primary-container{
+    background:#e8e8e8;
+    margin:0;
+}
 .center{
     display:flex;
     flex-direction: column;
@@ -23,4 +31,19 @@
 }
 .center:hover{
     color:red;
+}
+
+/* .top{
+    background:rgb(26,29,34);
+} */
+
+input[type="search"] {
+    border: 2px solid black;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px red;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    outline: none;
 }

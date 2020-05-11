@@ -1,0 +1,119 @@
+.card-update{
+    color:white;
+    background-image: radial-gradient(circle at 24% 23%, rgba(167, 167, 167,0.06) 0%, rgba(167, 167, 167,0.06) 25%,rgba(148, 148, 148,0.06) 25%, rgba(148, 148, 148,0.06) 50%,rgba(129, 129, 129,0.06) 50%, rgba(129, 129, 129,0.06) 75%,rgba(110, 110, 110,0.06) 75%, rgba(110, 110, 110,0.06) 100%),radial-gradient(circle at 58% 30%, rgba(14, 14, 14,0.06) 0%, rgba(14, 14, 14,0.06) 25%,rgba(60, 60, 60,0.06) 25%, rgba(60, 60, 60,0.06) 50%,rgba(107, 107, 107,0.06) 50%, rgba(107, 107, 107,0.06) 75%,rgba(153, 153, 153,0.06) 75%, rgba(153, 153, 153,0.06) 100%),radial-gradient(circle at 79% 53%, rgba(225, 225, 225,0.06) 0%, rgba(225, 225, 225,0.06) 25%,rgba(189, 189, 189,0.06) 25%, rgba(189, 189, 189,0.06) 50%,rgba(152, 152, 152,0.06) 50%, rgba(152, 152, 152,0.06) 75%,rgba(116, 116, 116,0.06) 75%, rgba(116, 116, 116,0.06) 100%),linear-gradient(221deg, rgb(0,0,0),rgb(0,0,0));
+    border-radius: 5%;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    height: 85%;
+    width: 45%;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.update-container{
+    display: flex;
+    align-items: center;
+    height: 93vh;
+    background-image:linear-gradient(45deg, rgb(244,43,75) 0%, rgb(244,43,75) 25%,rgb(26,29,35) 25%, rgb(26,29,35) 50%,rgb(244,43,75) 50%, rgb(244,43,75) 75%,rgb(26,29,35) 75%, rgb(26,29,35) 100%),linear-gradient(135deg, rgb(251, 248, 117) 0%, rgb(251, 248, 117) 25%,rgb(246, 167, 110) 25%, rgb(246, 167, 110) 50%,rgb(240, 85, 102) 50%, rgb(240, 85, 102) 75%,rgb(235, 4, 95) 75%, rgb(235, 4, 95) 100%);
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.main-div-update{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.title-top-div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.title-in-update{
+    color:rgb(244,43,75);
+}
+@media(max-width:500px){
+    .update-container{
+        display:flex;
+        justify-content:center;
+        align-content: center;
+    }
+    .card-update{
+        width:90vw;
+    }
+}
+
+input[type="search"] {
+    width: 50%;
+    
+    border: 2px solid black;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px red;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    outline: none;
+}
+.set-to-origin{
+    width:40%;
+    margin:5px;
+    font-family: 'Roboto Condensed';
+    
+    font-weight: bold;
+    font-size: 15px;
+    background-color: black;
+    color: #F42B4B;
+}
+
+.update-name-middle{
+    display: flex;
+
+}
+
+
+.text-area-update{
+    width:90%;
+    height:10vh;
+    color:black;
+    border-color: #F42B4B;
+    border-style: solid;
+    border-radius: 1%;
+}
+.text-area-update:focus{
+    background-color:none;
+}
+
+.set-description-update{
+    /* width:40%; */
+    width:90%;
+    margin:5px;
+    font-family: 'Roboto Condensed';
+    
+    font-weight: bold;
+    font-size: 15px;
+    background-color: black;
+    color: #F42B4B;
+}
+.left-to-right{
+    display:flex;
+    justify-content: space-around;
+}
+
+.select-item-update{
+    border-radius:5px;
+    border-style:solid;
+    border-color:#F42B4B;
+     background:black;
+     color:white;
+    cursor: pointer;
+}
+
+.select-item-update:focus{
+    background-color: none;
+}
+
+.error-in-update{
+    margin:2%;
+}

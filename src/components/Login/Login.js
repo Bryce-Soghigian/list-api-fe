@@ -60,7 +60,7 @@ export const Login = () => {
             <h1>Login</h1>
 
             <label htmlFor="username">
-              username
+              Username
               <input
                 placeholder="username"
                 type="text"

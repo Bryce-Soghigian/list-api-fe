@@ -15,6 +15,7 @@ export default function Navbar() {
       <div className="nav-container">
         <div className="left-nav">Welcome {state.username}</div>
         <div className="right-nav">
+          <Link to="/">Home</Link>
           <Link to="/Friends">Social</Link>
           <Link to="/global">Global</Link>
           <button onClick={clearLocalStorage} className="button">

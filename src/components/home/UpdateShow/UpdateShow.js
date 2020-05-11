@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/contexts";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import "./Update.css";
 export default function UpdateShow() {
   const initialState = {
     listItem: "",
@@ -12,9 +13,7 @@ export default function UpdateShow() {
   const [postBody, setPostBody] = useState(initialState);
   console.log(postBody);
   const [message, setMessage] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const { state } = useContext(UserContext);
-  console.log(state.UPDATE_ITEM, "state in context");
 
   //===========Functions================
 
@@ -67,78 +66,106 @@ export default function UpdateShow() {
     });
   };
   if (state.UPDATE_ITEM !== null) {
-    // let current_id = state.UPDATE_ITEM.id
-
     return (
-      <div>
-        <h3>Update {state.UPDATE_ITEM.listItem}</h3>
-        <form>
-          <h3>Update Name</h3>
-          <input
-            name="listItem"
-            onChange={handleInput}
-            value={postBody.listItem}
-          />
-          <button onClick={setDefaultTitle}>Set To Original Value</button>
+      <div className="update-container">
+        <div className="card-update">
+          <div className="title-top-div">
+            <h3 className="title-in-update">
+              Update {state.UPDATE_ITEM.listItem}
+            </h3>
+          </div>
+          <form>
+            <div className="main-div-update">
+              <div>
+                <h3>Update Name</h3>
+                <div className="update-name-middle">
+                  <input
+                    type="search"
+                    name="listItem"
+                    onChange={handleInput}
+                    value={postBody.listItem}
+                  />
+                  <button className="set-to-origin" onClick={setDefaultTitle}>
+                    Set To Original Value
+                  </button>
+                </div>
+              </div>
 
-          <h3>Update Description</h3>
+              <h3>Update Description</h3>
 
-          <textarea
-            name="description"
-            onChange={handleInput}
-            value={postBody.description}
-          />
-          <button onClick={setDefaultDescription}>Set To Original Value</button>
-          <h3>Update Rank</h3>
-          <select onChange={handleTier}>
-            <option>Select A Tier</option>
-            <option value="S">S</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="F">F</option>
-          </select>
-          {/* <button onChange={setDefaultRating}>Set To Original Tier</button> */}
-          <h3>Update Genre</h3>
-          <select onChange={handleGenre}>
-            <option>PIck A Genre</option>
-            <option value="action">action</option>
-            <option value="adventure">adventure</option>
-            <option value="comedy">comedy</option>
-            <option value="drama">drama</option>
-            <option value="ecchi">ecchi</option>
-            <option value="fantasy">fantasy</option>
-            <option value="game">game</option>
-            <option value="harem">harem</option>
-            <option value="historical">historical</option>
-            <option value="horror">horror</option>
-            <option value="magic">magic</option>
-            <option value="mystery">mystery</option>
-            <option value="psychological">psychological</option>
-            <option value="school">school</option>
-            <option value="slice of life">slice of life</option>
-            <option value="seinen">seinen</option>
-            <option value="shounen">shounen</option>
-            <option value="supernatural">supernatural</option>
-            <option value="romance">romance</option>
-            <option value="sports">sports</option>
-          </select>
-          {/* <button onClick={setDefaultGenre}>Set genre to Original Genre</button> */}
-        </form>
-        {postBody.listItem !== "" &&
-        postBody.description !== "" &&
-        postBody.genre !== "" &&
-        postBody.rating !== "" ? (
-          <button className="submit-btn" onClick={handleSubmit}>
-            Submit Anime
-          </button>
-        ) : (
-          <button disabled>Submit Anime</button>
-        )}
-        <div>{message}</div>
-        <div>
-          <Link to="/">BACK TO MY LIST</Link>
+              <textarea
+                className="text-area-update"
+                name="description"
+                onChange={handleInput}
+                value={postBody.description}
+              />
+              <button
+                className="set-description-update"
+                onClick={setDefaultDescription}
+              >
+                Set To Original Value
+              </button>
+
+            <div className="left-to-right">
+            <div >
+            <h3>Update Rank</h3>
+              <select className="select-item-update" onChange={handleTier}>
+                <option>Select A Tier</option>
+                <option value="S">S</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+              </select>
+            </div>
+            <div >
+            <h3>Update Genre</h3>
+              <select className="select-item-update" onChange={handleGenre}>
+                <option>Pick A Genre</option>
+                <option value="action">action</option>
+                <option value="adventure">adventure</option>
+                <option value="comedy">comedy</option>
+                <option value="drama">drama</option>
+                <option value="ecchi">ecchi</option>
+                <option value="fantasy">fantasy</option>
+                <option value="game">game</option>
+                <option value="harem">harem</option>
+                <option value="historical">historical</option>
+                <option value="horror">horror</option>
+                <option value="magic">magic</option>
+                <option value="mystery">mystery</option>
+                <option value="psychological">psychological</option>
+                <option value="school">school</option>
+                <option value="slice of life">slice of life</option>
+                <option value="seinen">seinen</option>
+                <option value="shounen">shounen</option>
+                <option value="supernatural">supernatural</option>
+                <option value="romance">romance</option>
+                <option value="sports">sports</option>
+              </select>
+            </div>
+            </div>
+
+
+
+            </div>
+
+          </form>
+          {postBody.listItem !== "" &&
+          postBody.description !== "" &&
+          postBody.genre !== "" &&
+          postBody.rating !== "" ? (
+            <button className="set-to-origin" onClick={handleSubmit}>
+              Submit Anime
+            </button>
+          ) : (
+            <button disabled>Submit Anime</button>
+          )}
+          <div className="error-in-update">{message}</div>
+          <div>
+            <Link to="/">BACK TO MY LIST</Link>
+          </div>
         </div>
       </div>
     );

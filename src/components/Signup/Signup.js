@@ -59,7 +59,7 @@ export const Signup = () => {
             <h1>Signup</h1>
 
             <label htmlFor="username">
-              username
+              Username
               <input
               placeholder="username"
                 type="text"

@@ -4,13 +4,11 @@ import Listitem from "./Listitem";
 import "./main.css";
 import { Link } from "react-router-dom";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { UserContext } from "../../contexts/contexts";
 export default function Home() {
   const [errorState, setError] = useState("");
   const [localState, setLocal] = useState([]);
-  const [sucessful_get, set_sucessful_get] = useState(false);
+  const [SuccessfulGet, setSuccessfulGet] = useState(false);
   const [sortedState, setSorted] = useState([]);
-  const [sorting, setSorting] = useState(false);
 
 
   useEffect(() => {
@@ -21,10 +19,7 @@ export default function Home() {
         // map through array. push all the values into subarrays
         //merge subarrays and set state as sorted value
 
-        set_sucessful_get(true);
-        // let result = []
-        // result.concat(S,A)
-        setSorting(true);
+        setSuccessfulGet(true);
         let S = [];
         let A = [];
         let B = [];
@@ -56,14 +51,14 @@ export default function Home() {
         setLocal(cur_state);
         setSorted(cur_state);
 
-        setSorting(false);
+        
       })
       .catch((err) => {
         setError(err);
       });
   }, []);
   const FilterByGenre = (e) => {
-    setSorting(true);
+    
 
     let new_state = [];
     localState.map((x) => {
@@ -77,10 +72,10 @@ export default function Home() {
     });
 
     setSorted(new_state);
-    setSorting(false);
+    
   };
   const FilterByTier = (e) => {
-    setSorting(true);
+    
     let new_state = [];
     localState.map((x) => {
       if (e.target.value === x.rating) {
@@ -92,10 +87,10 @@ export default function Home() {
     });
 
     setSorted(new_state);
-    setSorting(false);
+    
   };
 
-  if (localState.length === 0 && sucessful_get === true) {
+  if (localState.length === 0 &&SuccessfulGet === true) {
     return (
       <div className="center">
         <p className="no-items">Please add a show to your list</p>
@@ -106,7 +101,7 @@ export default function Home() {
         </div>
       </div>
     );
-  } else if (localState.length === 0 && sucessful_get === false) {
+  } else if (localState.length === 0 &&SuccessfulGet === false) {
     return (
       <div>
         <p>rendering your anime list</p>
@@ -119,13 +114,12 @@ export default function Home() {
     );
   } else {
     return (
-      <div>
-        <div className="top">
+      <div className="home-primary-container">
           <div>
             <h3>
               My Anime List(List currently contains {sortedState.length} items)
             </h3>
-            <select onChange={FilterByGenre}>
+            <select className="select-class-home" onChange={FilterByGenre}>
               <option disabled>Filter By Genre</option>
               <option value="all">All</option>
               <option value="action">action</option>
@@ -149,7 +143,7 @@ export default function Home() {
               <option value="supernatural">supernatural</option>
               <option value="sports">sports</option>
             </select>
-            <select onChange={FilterByTier}>
+            <select className="select-class" onChange={FilterByTier}>
               <option disabled>Filter By Tier</option>
               <option value="all">All</option>
               <option value="S">S</option>
@@ -177,7 +171,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </div>
+
       </div>
     );
   }
