@@ -33,8 +33,7 @@ export default function AutocompleteItem(props) {
     
     return (
         <div>
-           <p>{props.state.username}</p>
-    <button onClick={SendRequest}>{local}</button> 
+    <button onClick={SendRequest}>{local}{` to ${props.state.username}`}</button> 
         </div>
     )
 }

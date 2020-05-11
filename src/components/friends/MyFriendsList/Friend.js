@@ -20,9 +20,9 @@ export default function Friend(props) {
 
 
     return (
-        <div>
-            <p>{props.state.my_username}</p>
-            <button onClick={fetchUserList}><Link to="/CurrentFriend">{`View ${props.state.my_username}\'s List`}</Link></button>
+        <div class="following-container">
+            {/* <p>{props.state.my_username}</p> */}
+            <button className="set-to-origin" onClick={fetchUserList}><Link to="/CurrentFriend">{`View ${props.state.my_username}\'s List`}</Link></button>
         </div>
     )
 }

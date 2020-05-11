@@ -26,19 +26,18 @@ const [error, setError] = useState()
     }, [])
     if(friends.length === 0 && error === false){
         return(
-            
-            <div>Normally you would view friend requests here... if anyone had sent you any 😬</div>
+            <div>Currently you don't have any pending follow requests</div>
         )
     }else if(friends.length === 0){
         return (
             <div>
-                Loading friend requests...
+                Loading follow requests...
             </div>
         )
     }else{
         return (
         <div className="view-friend-request-scrollable-div">
-            <h1>My Friend Requests</h1>
+            <h1>My Follow Requests</h1>
             <div>
             <p>Pending Requests</p>
                 <div>
@@ -47,6 +46,7 @@ const [error, setError] = useState()
                     
                 })}
                 </div>
+                
             </div>
 
 

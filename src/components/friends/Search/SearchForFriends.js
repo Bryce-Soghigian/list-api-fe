@@ -41,9 +41,9 @@ export default function SearchForFriends() {
     if( error === false && state.userList !== null){
         return(
             <div>
-                <input value={input} onChange={search}/>
+                <input  className="search-in-friends" value={input} placeholder="Search For Friends" onChange={search}/>
                 <div>
-                    <AutocompleteSuggestions matches={matches}/>
+                    <AutocompleteSuggestions input ={input} matches={matches}/>
         <p>{state.friendMessage}</p>
                 </div>
             </div>

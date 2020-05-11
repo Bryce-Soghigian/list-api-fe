@@ -1,8 +1,6 @@
 .view-friend-request-scrollable-div{
-    height:93vh;
-    width: 50vw;
-    color:white;
-    background-color:rgb(244,43,75) ;
+     height:93vh;
+    width: 50vw; 
     overflow-y: scroll;
     display: flex;
     flex-direction: column;

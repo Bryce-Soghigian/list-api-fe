@@ -1,3 +1,10 @@
 .friends-main-container{
     display: flex;
+
+}
+@media(max-width:500px){
+    .friends-main-container{
+        display:flex;
+        flex-direction:column;
+    }
 }
