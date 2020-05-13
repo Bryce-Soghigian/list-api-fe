@@ -37,7 +37,7 @@ export default function Global() {
           <div></div>
         ) : (
           <select onChange={handleChange}>
-            <option>Choose a tier to view</option>
+            <option disabled>Choose a tier to view</option>
             <option value="S">S</option>
             <option value="A">A</option>
             <option value="B">B</option>

@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="right-nav">
           <Link to="/">Home</Link>
           <Link to="/Friends">Social</Link>
-          <Link to="/global">Global</Link>
+          <Link to="/Main">Personal</Link>
           <button onClick={clearLocalStorage} className="button">
             Logout
           </button>
@@ -27,8 +27,15 @@ export default function Navbar() {
   } else {
     return (
       <div className="nav-container-login">
+        <div className="left-nav">
+        <Link to="/Login">Please Login to view more</Link>
+        </div>
+        <div className="right-nav">
+        <Link to="/">Home</Link>
         <Link to="/Signup">Signup</Link>
         <Link to="/Login">Login</Link>
+        </div>
+
       </div>
     );
   }

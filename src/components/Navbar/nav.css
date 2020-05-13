@@ -27,12 +27,16 @@
 }
 .left-nav {
   display: flex;
-  /* justify-content: flex-start; */
+  width:50vw;
+  justify-content: flex-start;
   font-family: "Roboto Condensed";
 }
 .right-nav {
   display: flex;
+  width:50vw;
+  align-items: center;
   justify-content: flex-end;
+  margin:20px;
 }
 .button {
   height: 4vh;

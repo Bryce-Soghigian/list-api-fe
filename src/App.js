@@ -141,13 +141,13 @@ function App() {
       <UpdateContext.Provider>
         <div className="App">
           <Navbar />
-          <PrivateRoute exact path="/" component={Main} />
+          <Route exact path="/" component={Global} />
           <PrivateRoute exact path="/update" component={UpdateShow} />
           <PrivateRoute exact path="/new" component={AddAnime} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <PrivateRoute exact path="/CurrentFriend" component={CurrentFriend} />
-          <PrivateRoute exact path="/Global" component={Global} />
+          <Route exact path="/Main" component={Main} />
           <PrivateRoute exact path="/friends" component={FriendsHome} />
         </div>
       </UpdateContext.Provider>

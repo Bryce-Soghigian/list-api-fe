@@ -117,7 +117,7 @@ export default function Home() {
       <div className="home-primary-container">
           <div>
             <h3>
-              My Anime List(List currently contains {sortedState.length} items)
+              My List(List currently contains {sortedState.length} items)
             </h3>
             <select className="select-class-home" onChange={FilterByGenre}>
               <option disabled>Filter By Genre</option>
