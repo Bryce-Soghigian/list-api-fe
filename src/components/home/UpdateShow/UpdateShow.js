@@ -106,51 +106,47 @@ export default function UpdateShow() {
                 Set To Original Value
               </button>
 
-            <div className="left-to-right">
-            <div >
-            <h3>Update Rank</h3>
-              <select className="select-item-update" onChange={handleTier}>
-                <option>Select A Tier</option>
-                <option value="S">S</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="F">F</option>
-              </select>
+              <div className="left-to-right">
+                <div>
+                  <h3>Update Rank</h3>
+                  <select className="select-item-update" onChange={handleTier}>
+                    <option>Select A Tier</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                  </select>
+                </div>
+                <div>
+                  <h3>Update Genre</h3>
+                  <select className="select-item-update" onChange={handleGenre}>
+                    <option>Pick A Genre</option>
+                    <option value="action">action</option>
+                    <option value="adventure">adventure</option>
+                    <option value="comedy">comedy</option>
+                    <option value="drama">drama</option>
+                    <option value="ecchi">ecchi</option>
+                    <option value="fantasy">fantasy</option>
+                    <option value="game">game</option>
+                    <option value="harem">harem</option>
+                    <option value="historical">historical</option>
+                    <option value="horror">horror</option>
+                    <option value="magic">magic</option>
+                    <option value="mystery">mystery</option>
+                    <option value="psychological">psychological</option>
+                    <option value="school">school</option>
+                    <option value="slice of life">slice of life</option>
+                    <option value="seinen">seinen</option>
+                    <option value="shounen">shounen</option>
+                    <option value="supernatural">supernatural</option>
+                    <option value="romance">romance</option>
+                    <option value="sports">sports</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div >
-            <h3>Update Genre</h3>
-              <select className="select-item-update" onChange={handleGenre}>
-                <option>Pick A Genre</option>
-                <option value="action">action</option>
-                <option value="adventure">adventure</option>
-                <option value="comedy">comedy</option>
-                <option value="drama">drama</option>
-                <option value="ecchi">ecchi</option>
-                <option value="fantasy">fantasy</option>
-                <option value="game">game</option>
-                <option value="harem">harem</option>
-                <option value="historical">historical</option>
-                <option value="horror">horror</option>
-                <option value="magic">magic</option>
-                <option value="mystery">mystery</option>
-                <option value="psychological">psychological</option>
-                <option value="school">school</option>
-                <option value="slice of life">slice of life</option>
-                <option value="seinen">seinen</option>
-                <option value="shounen">shounen</option>
-                <option value="supernatural">supernatural</option>
-                <option value="romance">romance</option>
-                <option value="sports">sports</option>
-              </select>
-            </div>
-            </div>
-
-
-
-            </div>
-
           </form>
           {postBody.listItem !== "" &&
           postBody.description !== "" &&

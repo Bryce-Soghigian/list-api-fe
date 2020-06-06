@@ -1,10 +1,9 @@
-.friends-main-container{
-    display: flex;
-
+.friends-main-container {
+  display: flex;
 }
-@media(max-width:500px){
-    .friends-main-container{
-        display:flex;
-        flex-direction:column;
-    }
+@media (max-width: 500px) {
+  .friends-main-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

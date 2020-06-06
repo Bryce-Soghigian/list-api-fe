@@ -8,21 +8,20 @@ export default function Global() {
     return setCurrentTier(e.target.value);
   };
 
-
   useEffect(() => {
     Axios.get(`https://anime-list-api.herokuapp.com/tier/${current_tier}`)
       .then((res) => {
-          //removing duplicates
-          let new_data = []
-          let set = new Set()
-          res.data.map(x => {
-              if(set.has(x.listItem)){
-                  console.log("exists")
-              }else{
-                  set.add(x.listItem)
-                  new_data.push(x)
-              }
-          })
+        //removing duplicates
+        let new_data = [];
+        let set = new Set();
+        res.data.map((x) => {
+          if (set.has(x.listItem)) {
+            console.log("exists");
+          } else {
+            set.add(x.listItem);
+            new_data.push(x);
+          }
+        });
         setTierState(new_data);
       })
       .catch((err) => {

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./Listitem.scss";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/contexts";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FcSettings } from "react-icons/fc";
@@ -63,11 +63,9 @@ export default function Listitem(props) {
           <AiOutlineInfoCircle />
         </button>
         <Link to="/update">
-        <button id="button" onClick={updateAnime}>
-
+          <button id="button" onClick={updateAnime}>
             <FcSettings />
-       
-        </button>
+          </button>
         </Link>
         <button id="button" onClick={deleteAnime}>
           <TiDelete />

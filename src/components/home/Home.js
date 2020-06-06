@@ -10,10 +10,9 @@ export default function Home() {
   const [SuccessfulGet, setSuccessfulGet] = useState(false);
   const [sortedState, setSorted] = useState([]);
 
-
   useEffect(() => {
     //Gets users anime list
-    let user_id = localStorage.getItem("user_id")
+    let user_id = localStorage.getItem("user_id");
     Axios.get(`https://anime-list-api.herokuapp.com/list/${user_id}`)
       .then((res) => {
         // map through array. push all the values into subarrays
@@ -50,19 +49,14 @@ export default function Home() {
         let cur_state = Array.from(S.concat(A, B, C, D, F));
         setLocal(cur_state);
         setSorted(cur_state);
-
-        
       })
       .catch((err) => {
         setError(err);
       });
   }, []);
   const FilterByGenre = (e) => {
-    
-
     let new_state = [];
     localState.map((x) => {
-
       if (e.target.value === x.genre) {
         new_state.push(x);
       }
@@ -72,10 +66,8 @@ export default function Home() {
     });
 
     setSorted(new_state);
-    
   };
   const FilterByTier = (e) => {
-    
     let new_state = [];
     localState.map((x) => {
       if (e.target.value === x.rating) {
@@ -87,10 +79,9 @@ export default function Home() {
     });
 
     setSorted(new_state);
-    
   };
 
-  if (localState.length === 0 &&SuccessfulGet === true) {
+  if (localState.length === 0 && SuccessfulGet === true) {
     return (
       <div className="center">
         <p className="no-items">Please add a show to your list</p>
@@ -101,7 +92,7 @@ export default function Home() {
         </div>
       </div>
     );
-  } else if (localState.length === 0 &&SuccessfulGet === false) {
+  } else if (localState.length === 0 && SuccessfulGet === false) {
     return (
       <div>
         <p>rendering your anime list</p>
@@ -115,63 +106,60 @@ export default function Home() {
   } else {
     return (
       <div className="home-primary-container">
-          <div>
-            <h3>
-              My List(List currently contains {sortedState.length} items)
-            </h3>
-            <select className="select-class-home" onChange={FilterByGenre}>
-              <option disabled>Filter By Genre</option>
-              <option value="all">All</option>
-              <option value="action">action</option>
-              <option value="adventure">adventure</option>
-              <option value="comedy">comedy</option>
-              <option value="drama">drama</option>
-              <option value="ecchi">ecchi</option>
-              <option value="fantasy">fantasy</option>
-              <option value="game">game</option>
-              <option value="harem">harem</option>
-              <option value="historical">historical</option>
-              <option value="horror">horror</option>
-              <option value="magic">magic</option>
-              <option value="mystery">mystery</option>
-              <option value="psychological">psychological</option>
-              <option value="school">school</option>
-              <option value="slice of life">slice of life</option>
-              <option value="romance">romance</option>
-              <option value="seinen">seinen</option>
-              <option value="shounen">shounen</option>
-              <option value="supernatural">supernatural</option>
-              <option value="sports">sports</option>
-            </select>
-            <select className="select-class-home" onChange={FilterByTier}>
-              <option disabled>Filter By Tier</option>
-              <option value="all">All</option>
-              <option value="S">S</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-              <option value="F">F</option>
-            </select>
-            <div className="center">
-              <Link to="/new">
-                <AiFillPlusCircle />
-              </Link>
-            </div>
+        <div>
+          <h3>My List(List currently contains {sortedState.length} items)</h3>
+          <select className="select-class-home" onChange={FilterByGenre}>
+            <option disabled>Filter By Genre</option>
+            <option value="all">All</option>
+            <option value="action">action</option>
+            <option value="adventure">adventure</option>
+            <option value="comedy">comedy</option>
+            <option value="drama">drama</option>
+            <option value="ecchi">ecchi</option>
+            <option value="fantasy">fantasy</option>
+            <option value="game">game</option>
+            <option value="harem">harem</option>
+            <option value="historical">historical</option>
+            <option value="horror">horror</option>
+            <option value="magic">magic</option>
+            <option value="mystery">mystery</option>
+            <option value="psychological">psychological</option>
+            <option value="school">school</option>
+            <option value="slice of life">slice of life</option>
+            <option value="romance">romance</option>
+            <option value="seinen">seinen</option>
+            <option value="shounen">shounen</option>
+            <option value="supernatural">supernatural</option>
+            <option value="sports">sports</option>
+          </select>
+          <select className="select-class-home" onChange={FilterByTier}>
+            <option disabled>Filter By Tier</option>
+            <option value="all">All</option>
+            <option value="S">S</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+          </select>
+          <div className="center">
+            <Link to="/new">
+              <AiFillPlusCircle />
+            </Link>
           </div>
+        </div>
 
-          <h3>{errorState}</h3>
-          <div className="list-items">
-            {sortedState.map((x) => {
-              return <Listitem state={x} />;
-            })}
-            <div className="item-container">
-              <Link to="/new">
-                <AiFillPlusCircle />
-              </Link>
-            </div>
+        <h3>{errorState}</h3>
+        <div className="list-items">
+          {sortedState.map((x) => {
+            return <Listitem state={x} />;
+          })}
+          <div className="item-container">
+            <Link to="/new">
+              <AiFillPlusCircle />
+            </Link>
           </div>
-
+        </div>
       </div>
     );
   }

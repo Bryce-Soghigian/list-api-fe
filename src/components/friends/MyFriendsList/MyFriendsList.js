@@ -3,7 +3,7 @@ import axios from "axios";
 import { UserContext } from "../../../contexts/contexts";
 import Friend from "./Friend";
 import SearchForFriends from "../Search/SearchForFriends";
-import "./list.css"
+import "./list.css";
 export default function MyFriendsList() {
   const { state, dispatch } = useContext(UserContext);
   console.log(state.friendsList, "console logg");
@@ -33,8 +33,8 @@ export default function MyFriendsList() {
   if (state.friendsList !== null) {
     return (
       <div>
-          <h1>Request to follow a friend!</h1>
-          <SearchForFriends />
+        <h1>Request to follow a friend!</h1>
+        <SearchForFriends />
         <div>
           <h2>The people you follow</h2>
           <div className="following-container">
@@ -53,5 +53,4 @@ export default function MyFriendsList() {
       </div>
     );
   }
-
 }
