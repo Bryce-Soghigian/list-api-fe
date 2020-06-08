@@ -15,7 +15,7 @@ export default function AutocompleteItem(props) {
     let id = localStorage.getItem("user_id");
     axios
       .post(`https://anime-list-api.herokuapp.com/friend/${id}`, request_object)
-      .then((res) => {
+      .then(res => {
         if (res.data) {
           setLocal("sent");
           dispatch({
@@ -27,7 +27,7 @@ export default function AutocompleteItem(props) {
           setLocal("error refresh");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };

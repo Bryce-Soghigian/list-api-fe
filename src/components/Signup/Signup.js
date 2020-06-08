@@ -11,13 +11,13 @@ export const Signup = () => {
     errorMessage: null,
   };
   const [data, setData] = useState(initialState);
-  const handleInputChange = (event) => {
+  const handleInputChange = event => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setData({
       ...data,
@@ -31,7 +31,7 @@ export const Signup = () => {
     };
     axios
       .post("https://anime-list-api.herokuapp.com/user/signup", post_object)
-      .then((res) => {
+      .then(res => {
         console.log(res, "res");
         if (res.data.name === "error") {
           setData({
@@ -43,7 +43,7 @@ export const Signup = () => {
           history.push("/Login");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         setData({
           ...data,
           isSubmitting: false,

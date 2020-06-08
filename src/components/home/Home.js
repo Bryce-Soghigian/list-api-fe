@@ -14,7 +14,7 @@ export default function Home() {
     //Gets users anime list
     let user_id = localStorage.getItem("user_id");
     Axios.get(`https://anime-list-api.herokuapp.com/list/${user_id}`)
-      .then((res) => {
+      .then(res => {
         // map through array. push all the values into subarrays
         //merge subarrays and set state as sorted value
 
@@ -26,7 +26,7 @@ export default function Home() {
         let D = [];
         let F = [];
         let map_array = Array.from(res.data);
-        map_array.map((item) => {
+        map_array.map(item => {
           if (item.rating === "S") {
             S.push(item);
           }
@@ -50,13 +50,13 @@ export default function Home() {
         setLocal(cur_state);
         setSorted(cur_state);
       })
-      .catch((err) => {
+      .catch(err => {
         setError(err);
       });
   }, []);
-  const FilterByGenre = (e) => {
+  const FilterByGenre = e => {
     let new_state = [];
-    localState.map((x) => {
+    localState.map(x => {
       if (e.target.value === x.genre) {
         new_state.push(x);
       }
@@ -67,9 +67,9 @@ export default function Home() {
 
     setSorted(new_state);
   };
-  const FilterByTier = (e) => {
+  const FilterByTier = e => {
     let new_state = [];
-    localState.map((x) => {
+    localState.map(x => {
       if (e.target.value === x.rating) {
         new_state.push(x);
       }
@@ -151,7 +151,7 @@ export default function Home() {
 
         <h3>{errorState}</h3>
         <div className="list-items">
-          {sortedState.map((x) => {
+          {sortedState.map(x => {
             return <Listitem state={x} />;
           })}
           <div className="item-container">

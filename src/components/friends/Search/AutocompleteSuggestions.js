@@ -5,7 +5,7 @@ export default function AutocompleteSuggestions(props) {
   if (props.matches.length !== 0 && props.input !== "") {
     return (
       <div className="autocomplete-container">
-        {props.matches.map((x) => {
+        {props.matches.map(x => {
           return (
             <div>
               <AutocompleteItem state={x} />

@@ -9,11 +9,11 @@ export default function ViewFriendRequests() {
     let user_id = localStorage.getItem("user_id");
     axios
       .get(`https://anime-list-api.herokuapp.com/friend/${user_id}`)
-      .then((res) => {
+      .then(res => {
         console.log(res.data, "res.data");
         let filtered_arr = [];
         let data = res.data;
-        data.map((x) => {
+        data.map(x => {
           if (x.status === "pending") {
             filtered_arr.push(x);
           }
@@ -21,7 +21,7 @@ export default function ViewFriendRequests() {
         setFriends(filtered_arr);
         setError(false);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);
@@ -36,7 +36,7 @@ export default function ViewFriendRequests() {
         <div>
           <p>Pending Requests</p>
           <div>
-            {friends.map((x) => {
+            {friends.map(x => {
               return <FriendRequestItem state={x} />;
             })}
           </div>

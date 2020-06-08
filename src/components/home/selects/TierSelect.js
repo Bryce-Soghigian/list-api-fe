@@ -6,7 +6,7 @@ export default function TierSelect(props) {
   const { dispatch } = useContext(UserContext);
   const tier_update = "tier-update";
 
-  const dispatchTier = (e) => {
+  const dispatchTier = e => {
     return dispatch({ type: tier_update, payload: e.target.value });
   };
   return (

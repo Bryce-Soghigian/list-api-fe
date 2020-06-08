@@ -11,7 +11,7 @@ export default function CurrentFriend() {
       <div>
         <h1>{state.getCurrentFriendName}'s List</h1>
         <div>
-          {state.currentFriendAnimeList.map((x) => {
+          {state.currentFriendAnimeList.map(x => {
             return <CurrentFriendListItem state={x} />;
           })}
         </div>

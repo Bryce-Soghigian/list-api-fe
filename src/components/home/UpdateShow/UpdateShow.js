@@ -17,14 +17,14 @@ export default function UpdateShow() {
 
   //===========Functions================
 
-  const setDefaultDescription = (e) => {
+  const setDefaultDescription = e => {
     e.preventDefault();
     return setPostBody({
       ...postBody,
       description: state.UPDATE_ITEM.description,
     });
   };
-  const setDefaultTitle = (e) => {
+  const setDefaultTitle = e => {
     e.preventDefault();
     return setPostBody({
       ...postBody,
@@ -32,34 +32,34 @@ export default function UpdateShow() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     let current_id = state.UPDATE_ITEM.id;
     console.log(current_id, "Id");
     Axios.put(
       `https://anime-list-api.herokuapp.com/list/${current_id}`,
-      postBody
+      postBody,
     )
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         setMessage(`successfully updated ${state.UPDATE_ITEM.listItem}`);
       })
-      .catch((err) => {
+      .catch(err => {
         setMessage(err);
       });
   };
-  const handleInput = (e) => {
+  const handleInput = e => {
     setPostBody({
       ...postBody,
       [e.target.name]: e.target.value,
     });
   };
-  const handleTier = (e) => {
+  const handleTier = e => {
     return setPostBody({
       ...postBody,
       rating: e.target.value,
     });
   };
-  const handleGenre = (e) => {
+  const handleGenre = e => {
     return setPostBody({
       ...postBody,
       genre: e.target.value,
@@ -101,8 +101,7 @@ export default function UpdateShow() {
               />
               <button
                 className="set-description-update"
-                onClick={setDefaultDescription}
-              >
+                onClick={setDefaultDescription}>
                 Set To Original Value
               </button>
 

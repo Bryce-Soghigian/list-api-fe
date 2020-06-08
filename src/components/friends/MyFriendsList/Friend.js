@@ -7,7 +7,7 @@ export default function Friend(props) {
 
   const fetchUserList = () => {
     Axios.get(`https://anime-list-api.herokuapp.com/list/${props.state.my_id}`)
-      .then((res) => {
+      .then(res => {
         dispatch({
           type: "setCurrentFriendUsername",
           payload: props.state.my_username,
@@ -15,7 +15,7 @@ export default function Friend(props) {
         dispatch({ type: "setCurrentFriend", payload: res.data });
         console.log(res.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
       });
   };

@@ -9,12 +9,12 @@ export default function SearchForFriends() {
   const [matches, setMatch] = useState([]);
   const [input, setInput] = useState("");
   //Autocomplete logic
-  const search = (e) => {
+  const search = e => {
     e.preventDefault();
     setInput(e.target.value);
     let match_arr = [];
     if (state.userList !== null) {
-      state.userList.map((x) => {
+      state.userList.map(x => {
         if (x.username.includes(e.target.value) === true) {
           match_arr.push(x);
         }
@@ -26,11 +26,11 @@ export default function SearchForFriends() {
   const getUsers = () => {
     axios
       .get("https://anime-list-api.herokuapp.com/user/")
-      .then((res) => {
+      .then(res => {
         setError(false);
         dispatch({ type: "fetching_user_data", payload: res.data });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
         setError("ERROR");
       });

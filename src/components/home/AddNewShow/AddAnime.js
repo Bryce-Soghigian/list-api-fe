@@ -14,16 +14,16 @@ export default function AddAnime() {
   const [postBody, setPostBody] = useState(initialState);
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     setSubmitting(true);
     Axios.post("https://anime-list-api.herokuapp.com/list/", postBody)
-      .then((res) => {
+      .then(res => {
         if (res.data) {
           setMessage(`Successfully Posted ${postBody.listItem}`);
           setSubmitting(false);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         setMessage(JSON.stringify(err));
         setSubmitting(false);
       });
@@ -35,19 +35,19 @@ export default function AddAnime() {
       userId: id,
     });
   };
-  const handleInput = (e) => {
+  const handleInput = e => {
     setPostBody({
       ...postBody,
       [e.target.name]: e.target.value,
     });
   };
-  const handleTier = (e) => {
+  const handleTier = e => {
     return setPostBody({
       ...postBody,
       rating: e.target.value,
     });
   };
-  const handleGenre = (e) => {
+  const handleGenre = e => {
     return setPostBody({
       ...postBody,
       genre: e.target.value,

@@ -4,7 +4,7 @@ import "../AddNewShow/Add.scss";
 export default function GenreSelect() {
   const { dispatch } = useContext(UserContext);
 
-  const DispatchGenre = (e) => {
+  const DispatchGenre = e => {
     e.preventDefault();
     return dispatch({ type: "genre_update", payload: e.target.value });
   };

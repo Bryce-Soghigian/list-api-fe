@@ -10,11 +10,11 @@ export default function MyFriendsList() {
   useEffect(() => {
     axios
       .get(`https://anime-list-api.herokuapp.com/friend/${state.user.user_id}`)
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         let new_data = [];
         let set = new Set();
-        res.data.map((x) => {
+        res.data.map(x => {
           if (set.has(x.my_username)) {
             console.log("exists");
           } else {
@@ -25,7 +25,7 @@ export default function MyFriendsList() {
         dispatch({ type: "fetch_users_friends", payload: new_data });
         // setError(false)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);
@@ -38,7 +38,7 @@ export default function MyFriendsList() {
         <div>
           <h2>The people you follow</h2>
           <div className="following-container">
-            {state.friendsList.map((x) => {
+            {state.friendsList.map(x => {
               return <Friend state={x} />;
             })}
           </div>

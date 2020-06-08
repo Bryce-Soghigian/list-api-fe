@@ -4,17 +4,17 @@ import MapGlobalItem from "./MapGlobalItem";
 export default function Global() {
   const [tierState, setTierState] = useState([]);
   const [current_tier, setCurrentTier] = useState("S");
-  const handleChange = (e) => {
+  const handleChange = e => {
     return setCurrentTier(e.target.value);
   };
 
   useEffect(() => {
     Axios.get(`https://anime-list-api.herokuapp.com/tier/${current_tier}`)
-      .then((res) => {
+      .then(res => {
         //removing duplicates
         let new_data = [];
         let set = new Set();
-        res.data.map((x) => {
+        res.data.map(x => {
           if (set.has(x.listItem)) {
             console.log("exists");
           } else {
@@ -24,7 +24,7 @@ export default function Global() {
         });
         setTierState(new_data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, [current_tier]);
@@ -49,7 +49,7 @@ export default function Global() {
       {tierState.length === 0 ? (
         <h1>Loading</h1>
       ) : (
-        tierState.map((x) => {
+        tierState.map(x => {
           return <MapGlobalItem state={x} />;
         })
       )}

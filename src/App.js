@@ -14,6 +14,7 @@ import Global from "./components/global/Global";
 import CurrentFriend from "./components/currentFriend/CurrentFriend";
 import AnimeToWatchHome from "./components/watch/AnimeToWatchHome";
 import { reducer, initialState } from "./reducer";
+import AddNewShowToWatch from "./components/watch/AddNewShowToWatch";
 function App() {
   //Removing token when user unloads the page via refresh
   window.onbeforeunload = function () {
@@ -28,12 +29,13 @@ function App() {
       value={{
         state,
         dispatch,
-      }}
-    >
+      }}>
       <div className="App">
         <Navbar />
         <Route exact path="/" component={Global} />
         <PrivateRoute exact path="/watch" component={AnimeToWatchHome} />
+        <PrivateRoute exact path="/watchadd" component={AddNewShowToWatch} />
+
         <PrivateRoute exact path="/update" component={UpdateShow} />
         <PrivateRoute exact path="/new" component={AddAnime} />
         <Route exact path="/Login" component={Login} />

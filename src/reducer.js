@@ -79,7 +79,7 @@ const reducer = (state, action) => {
       let C = [];
       let D = [];
       let F = [];
-      mapArray.map((item) => {
+      mapArray.map(item => {
         if (item.rating === "S") {
           S.push(item);
         }
