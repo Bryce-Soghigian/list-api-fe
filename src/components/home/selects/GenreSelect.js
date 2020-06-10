@@ -1,25 +1,17 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../../contexts/contexts";
-import "../AddNewShow/Add.scss"
+import "../AddNewShow/Add.scss";
 export default function GenreSelect() {
   const { dispatch } = useContext(UserContext);
 
-
-
   const DispatchGenre = e => {
-    e.preventDefault()
-    return dispatch({type:"genre_update",payload: e.target.value})
-  }
-
-
-
+    e.preventDefault();
+    return dispatch({ type: "genre_update", payload: e.target.value });
+  };
 
   return (
     <div>
-      <select
-      className="select-class"
-      onChange={DispatchGenre}
-      >
+      <select className="select-class" onChange={DispatchGenre}>
         <option>Pick A Genre</option>
         <option value="action">action</option>
         <option value="adventure">adventure</option>

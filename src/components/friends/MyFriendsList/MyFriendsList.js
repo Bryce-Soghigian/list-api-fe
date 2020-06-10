@@ -3,18 +3,18 @@ import axios from "axios";
 import { UserContext } from "../../../contexts/contexts";
 import Friend from "./Friend";
 import SearchForFriends from "../Search/SearchForFriends";
-import "./list.css"
+import "./list.css";
 export default function MyFriendsList() {
   const { state, dispatch } = useContext(UserContext);
   console.log(state.friendsList, "console logg");
   useEffect(() => {
     axios
       .get(`https://anime-list-api.herokuapp.com/friend/${state.user.user_id}`)
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         let new_data = [];
         let set = new Set();
-        res.data.map((x) => {
+        res.data.map(x => {
           if (set.has(x.my_username)) {
             console.log("exists");
           } else {
@@ -25,7 +25,7 @@ export default function MyFriendsList() {
         dispatch({ type: "fetch_users_friends", payload: new_data });
         // setError(false)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);
@@ -33,12 +33,12 @@ export default function MyFriendsList() {
   if (state.friendsList !== null) {
     return (
       <div>
-          <h1>Request to follow a friend!</h1>
-          <SearchForFriends />
+        <h1>Request to follow a friend!</h1>
+        <SearchForFriends />
         <div>
           <h2>The people you follow</h2>
           <div className="following-container">
-            {state.friendsList.map((x) => {
+            {state.friendsList.map(x => {
               return <Friend state={x} />;
             })}
           </div>
@@ -53,5 +53,4 @@ export default function MyFriendsList() {
       </div>
     );
   }
-
 }

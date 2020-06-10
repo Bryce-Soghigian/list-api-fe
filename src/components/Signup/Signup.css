@@ -1,91 +1,89 @@
 /******  LOGIN PAGE  ******/
-.login-container{
-    display: flex;
-    align-items: center;
-    height: 93vh;
-    background-repeat: no-repeat;
-    background-position: right;
-    padding-left: 5%;
-    padding-right: 5%;
- 
-  }
-  .card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    height: 70%;
-    width: 45%;
-  }
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  /* Add some padding inside the card container */
-  .login-container .container {
-    padding-left: 7%;
-    padding-right: 7%;
-    height: 100%;
-  }
-  .login-container .container h1{
-    font-size: 2.5rem;
-  }
-  .login-container .container form{
-    display: flex;
-    height: 80%;
-    flex-direction: column;
-    justify-content: space-around;
-    align-self: center;
-  }
-  input[type="text"], input[type="password"]{
-    padding-left: 1px;
-    padding-right: 1px;
-    height: 40px;
-    border-radius: 5px;
-    border: .5px solid rgb(143, 143, 143);
-    font-size: 15px;
-  }
-  label{
-    display: flex;
-    flex-direction: column;
-  }
-  .login-container button{
-    font-family: 'Roboto Condensed';
-    height: 40px;
-    font-weight: bold;
-    font-size: 15px;
-    background-color: black;
-    color:white;
+.login-container {
+  display: flex;
+  align-items: center;
+  height: 93vh;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  height: 70%;
+  width: 45%;
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+/* Add some padding inside the card container */
+.login-container .container {
+  padding-left: 7%;
+  padding-right: 7%;
+  height: 100%;
+}
+.login-container .container h1 {
+  font-size: 2.5rem;
+}
+.login-container .container form {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+}
+input[type="text"],
+input[type="password"] {
+  padding-left: 1px;
+  padding-right: 1px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0.5px solid rgb(143, 143, 143);
+  font-size: 15px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+}
+.login-container button {
+  font-family: "Roboto Condensed";
+  height: 40px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: black;
+  color: white;
+}
+.login-container button:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.1);
+  transition: 0.5s;
+  cursor: pointer;
+}
 
+.spinner {
+  animation: spinner infinite 0.9s linear;
+  height: 90%;
+}
+.spinner:focus {
+  border: none;
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
   }
-  .login-container button:hover{
-    background-color: black;
-    color:white;
-    transform: scale(1.1);
-    transition: .5s;
-    cursor: pointer;
+  to {
+    transform: rotate(360deg);
   }
-  
-  
-  .spinner {
-    animation: spinner infinite .9s linear;
-    height: 90%;
-  }
-  .spinner:focus{
-    border:none;
-  }
-  @keyframes spinner {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  .form-error{
-    color: whitesmoke;
-    text-align: center;
-  }
-  /* @media screen and (max-width: 700px){
+}
+.form-error {
+  color: whitesmoke;
+  text-align: center;
+}
+/* @media screen and (max-width: 700px){
     .login-container{
       justify-content: center;
       background-image: none;
@@ -102,11 +100,10 @@
     }
     
   } */
-  /******  LOGIN PAGE  ******/
-  
-  
-  /******  HEADER  ******/
-  /* #navigation{
+/******  LOGIN PAGE  ******/
+
+/******  HEADER  ******/
+/* #navigation{
     width: 100%;
     position: fixed;
     z-index: 10;
@@ -135,19 +132,18 @@
     outline: none !important;
   }
   /******  HEADER  ******/
-  
-  
-  /******  HOME PAGE  ******/
 
-  /* On mouse-over, add a deeper shadow */
-  .home .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  /* .home .card>img{
+/******  HOME PAGE  ******/
+
+/* On mouse-over, add a deeper shadow */
+.home .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+/* .home .card>img{
     width: 100%;
     height: 100%;
   } */
-  /* .home .content{
+/* .home .content{
     bottom: 0;
     z-index: 9;
     position: absolute;
@@ -160,16 +156,16 @@
     padding-bottom: 5px;
     transition: 0.5s;
   } */
-  /* .home .content:hover{
+/* .home .content:hover{
     background-color: rgba(255, 255, 255, 1);
     height: 50%;
     cursor: pointer;
   } */
-  /* .content>h2{
+/* .content>h2{
     text-align: center;
     font-size: 2rem;
   }  */
-  /* @media screen and (max-width: 780px){
+/* @media screen and (max-width: 780px){
   .home{
       justify-content: space-around;
     }
@@ -177,7 +173,7 @@
       width: 45%;
     }
   } */
-  /* @media screen and (max-width: 500px){
+/* @media screen and (max-width: 500px){
     .home .card {
       width: 90%;
     }

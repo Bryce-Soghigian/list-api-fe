@@ -14,14 +14,14 @@ export default function FriendRequestItem(props) {
     Axios.put(`https://anime-list-api.herokuapp.com/friend/${props.state.id}`, {
       status: "accepted",
     })
-      .then((res) => {
+      .then(res => {
         setStatusAccept("Accepted");
         Swal.fire({
           title: `Successfully added ${props.state.friend_username}`,
           icon: "success",
         });
       })
-      .catch((err) => {
+      .catch(err => {
         Swal.fire("Failed To Accept!", "error");
         console.log(err);
         setError(JSON.stringify(err));
@@ -29,14 +29,14 @@ export default function FriendRequestItem(props) {
   };
   const DenyRequest = () => {
     Axios.delete(
-      `https://anime-list-api.herokuapp.com/friend/delete/${props.state.id}`
+      `https://anime-list-api.herokuapp.com/friend/delete/${props.state.id}`,
     )
-      .then((res) => {
+      .then(res => {
         setStatusDelete(true);
         console.log(res);
         Swal.fire("Deleted Friend!", "success");
       })
-      .catch((err) => {
+      .catch(err => {
         Swal.fire("Failed Delete!", "error");
         console.log(err);
         setError(JSON.stringify(err));
@@ -49,11 +49,15 @@ export default function FriendRequestItem(props) {
       <div className="friend-request-item-container">
         <p>Request from:{props.state.my_username}</p>
         <div className="button-container-friend">
-          <button onClick={UpdateFriendRequest} id="accepted">{statusAccept}</button>
+          <button onClick={UpdateFriendRequest} id="accepted">
+            {statusAccept}
+          </button>
           {statusAccept === "Accepted" ? (
             <div>{""}</div>
           ) : (
-            <button onClick={DenyRequest} id="deny">{statusDelete}</button>
+            <button onClick={DenyRequest} id="deny">
+              {statusDelete}
+            </button>
           )}
         </div>
       </div>

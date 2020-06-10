@@ -1,41 +1,40 @@
-@mixin item-div-class(){
-    display: flex;
-    width:75vw;
-    margin:1%;
-    align-items: center;
-    justify-content: space-between;
-    border:2px solid black;
-    // clip-path: polygon(4% 0, 100% 0%, 94% 100%, 0% 100%);    
-    // color:white;
+@mixin item-div-class() {
+  display: flex;
+  width: 75vw;
+  margin: 1%;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  // clip-path: polygon(4% 0, 100% 0%, 94% 100%, 0% 100%);
+  // color:white;
 }
 
-.item{
-    margin:1%;
-    font-family: 'Roboto Condensed';
+.item {
+  margin: 1%;
+  font-family: "Roboto Condensed";
 }
-.F{
-    @include item-div-class();
-    background:#FF7F7F;
-    /* border:2px solid #F42B4B; */
- 
+.F {
+  @include item-div-class();
+  background: #ff7f7f;
+  /* border:2px solid #F42B4B; */
 }
-.D{
-    @include item-div-class();
-    background: rgb(255,191,127);
+.D {
+  @include item-div-class();
+  background: rgb(255, 191, 127);
 }
-.C{
-    @include item-div-class();
-    background-color: rgb(255,223,127);
+.C {
+  @include item-div-class();
+  background-color: rgb(255, 223, 127);
 }
-.B{
-    @include item-div-class();
-    background:rgb(255,255,126);
+.B {
+  @include item-div-class();
+  background: rgb(255, 255, 126);
 }
-.A{
-    @include item-div-class();
-    background-color: rgb(191,254,127);
+.A {
+  @include item-div-class();
+  background-color: rgb(191, 254, 127);
 }
-.S{
-    @include item-div-class();
-    background-color: rgb(127,255,127);
+.S {
+  @include item-div-class();
+  background-color: rgb(127, 255, 127);
 }

@@ -1,16 +1,15 @@
 a:-webkit-any-link {
   text-decoration: none;
   color: inherit;
-  margin:2%;
+  margin: 2%;
   text-transform: uppercase;
 }
-a:-webkit-any-link:hover{
-  color:white;
-  transform:scale(1.1);
-  transition: .5s;
+a:-webkit-any-link:hover {
+  color: white;
+  transform: scale(1.1);
+  transition: 0.5s;
   text-decoration: underline;
-
 }
-body{
-  background:#e8e8e8;
+body {
+  background: #e8e8e8;
 }

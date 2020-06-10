@@ -17,14 +17,14 @@ export default function UpdateShow() {
 
   //===========Functions================
 
-  const setDefaultDescription = (e) => {
+  const setDefaultDescription = e => {
     e.preventDefault();
     return setPostBody({
       ...postBody,
       description: state.UPDATE_ITEM.description,
     });
   };
-  const setDefaultTitle = (e) => {
+  const setDefaultTitle = e => {
     e.preventDefault();
     return setPostBody({
       ...postBody,
@@ -32,34 +32,34 @@ export default function UpdateShow() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     let current_id = state.UPDATE_ITEM.id;
     console.log(current_id, "Id");
     Axios.put(
       `https://anime-list-api.herokuapp.com/list/${current_id}`,
-      postBody
+      postBody,
     )
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         setMessage(`successfully updated ${state.UPDATE_ITEM.listItem}`);
       })
-      .catch((err) => {
+      .catch(err => {
         setMessage(err);
       });
   };
-  const handleInput = (e) => {
+  const handleInput = e => {
     setPostBody({
       ...postBody,
       [e.target.name]: e.target.value,
     });
   };
-  const handleTier = (e) => {
+  const handleTier = e => {
     return setPostBody({
       ...postBody,
       rating: e.target.value,
     });
   };
-  const handleGenre = (e) => {
+  const handleGenre = e => {
     return setPostBody({
       ...postBody,
       genre: e.target.value,
@@ -101,56 +101,51 @@ export default function UpdateShow() {
               />
               <button
                 className="set-description-update"
-                onClick={setDefaultDescription}
-              >
+                onClick={setDefaultDescription}>
                 Set To Original Value
               </button>
 
-            <div className="left-to-right">
-            <div >
-            <h3>Update Rank</h3>
-              <select className="select-item-update" onChange={handleTier}>
-                <option>Select A Tier</option>
-                <option value="S">S</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="F">F</option>
-              </select>
+              <div className="left-to-right">
+                <div>
+                  <h3>Update Rank</h3>
+                  <select className="select-item-update" onChange={handleTier}>
+                    <option>Select A Tier</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                  </select>
+                </div>
+                <div>
+                  <h3>Update Genre</h3>
+                  <select className="select-item-update" onChange={handleGenre}>
+                    <option>Pick A Genre</option>
+                    <option value="action">action</option>
+                    <option value="adventure">adventure</option>
+                    <option value="comedy">comedy</option>
+                    <option value="drama">drama</option>
+                    <option value="ecchi">ecchi</option>
+                    <option value="fantasy">fantasy</option>
+                    <option value="game">game</option>
+                    <option value="harem">harem</option>
+                    <option value="historical">historical</option>
+                    <option value="horror">horror</option>
+                    <option value="magic">magic</option>
+                    <option value="mystery">mystery</option>
+                    <option value="psychological">psychological</option>
+                    <option value="school">school</option>
+                    <option value="slice of life">slice of life</option>
+                    <option value="seinen">seinen</option>
+                    <option value="shounen">shounen</option>
+                    <option value="supernatural">supernatural</option>
+                    <option value="romance">romance</option>
+                    <option value="sports">sports</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div >
-            <h3>Update Genre</h3>
-              <select className="select-item-update" onChange={handleGenre}>
-                <option>Pick A Genre</option>
-                <option value="action">action</option>
-                <option value="adventure">adventure</option>
-                <option value="comedy">comedy</option>
-                <option value="drama">drama</option>
-                <option value="ecchi">ecchi</option>
-                <option value="fantasy">fantasy</option>
-                <option value="game">game</option>
-                <option value="harem">harem</option>
-                <option value="historical">historical</option>
-                <option value="horror">horror</option>
-                <option value="magic">magic</option>
-                <option value="mystery">mystery</option>
-                <option value="psychological">psychological</option>
-                <option value="school">school</option>
-                <option value="slice of life">slice of life</option>
-                <option value="seinen">seinen</option>
-                <option value="shounen">shounen</option>
-                <option value="supernatural">supernatural</option>
-                <option value="romance">romance</option>
-                <option value="sports">sports</option>
-              </select>
-            </div>
-            </div>
-
-
-
-            </div>
-
           </form>
           {postBody.listItem !== "" &&
           postBody.description !== "" &&

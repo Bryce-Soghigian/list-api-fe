@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {  useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import "./Signup.css"
+import "./Signup.css";
 export const Signup = () => {
-    let history = useHistory();
+  let history = useHistory();
   const initialState = {
     username: "",
     password: "",
@@ -11,13 +11,13 @@ export const Signup = () => {
     errorMessage: null,
   };
   const [data, setData] = useState(initialState);
-  const handleInputChange = (event) => {
+  const handleInputChange = event => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setData({
       ...data,
@@ -26,29 +26,30 @@ export const Signup = () => {
     });
 
     let post_object = {
-        username:data.username,
-        password:data.password
+      username: data.username,
+      password: data.password,
     };
-    axios.post("https://anime-list-api.herokuapp.com/user/signup", post_object)
-    .then(res => {
-            console.log(res,"res")
-            if(res.data.name === "error"){
-                setData({
-                    ...data,
-                    isSubmitting: false,
-                    errorMessage: res.data.detail
-                })
-            }else{
-                history.push("/Login")
-            }
-            
-    }).catch(err => {
-        setData({
+    axios
+      .post("https://anime-list-api.herokuapp.com/user/signup", post_object)
+      .then(res => {
+        console.log(res, "res");
+        if (res.data.name === "error") {
+          setData({
             ...data,
             isSubmitting: false,
-            errorMessage: err.message || err.statusText
-        })
-    })
+            errorMessage: res.data.detail,
+          });
+        } else {
+          history.push("/Login");
+        }
+      })
+      .catch(err => {
+        setData({
+          ...data,
+          isSubmitting: false,
+          errorMessage: err.message || err.statusText,
+        });
+      });
   };
 
   return (
@@ -61,7 +62,7 @@ export const Signup = () => {
             <label htmlFor="username">
               Username
               <input
-              placeholder="username"
+                placeholder="username"
                 type="text"
                 value={data.username}
                 onChange={handleInputChange}
@@ -73,7 +74,7 @@ export const Signup = () => {
             <label htmlFor="password">
               Password
               <input
-               placeholder="password"
+                placeholder="password"
                 type="password"
                 value={data.password}
                 onChange={handleInputChange}
@@ -81,10 +82,11 @@ export const Signup = () => {
                 id="password"
               />
             </label>
-            <div className="error-div">{data.errorMessage && (
-              <span className="form-error">{data.errorMessage}</span>
-            )}</div>
-
+            <div className="error-div">
+              {data.errorMessage && (
+                <span className="form-error">{data.errorMessage}</span>
+              )}
+            </div>
 
             <button disabled={data.isSubmitting} onClick={handleSubmit}>
               {data.isSubmitting ? "Loading..." : "Signup"}
