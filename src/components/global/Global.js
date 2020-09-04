@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import MapGlobalItem from "./MapGlobalItem";
+import "./Global.scss"
 export default function Global() {
   const [tierState, setTierState] = useState([]);
   const [current_tier, setCurrentTier] = useState("S");
@@ -49,9 +50,14 @@ export default function Global() {
       {tierState.length === 0 ? (
         <h1>Loading</h1>
       ) : (
-        tierState.map(x => {
-          return <MapGlobalItem state={x} />;
-        })
+        <div className="global-container">
+          <div className="left"><p className="tier-big-bold">{current_tier}</p></div> 
+          <div className="right">
+            {tierState.map(x => {
+              return <MapGlobalItem state={x} />;
+            })}
+          </div>
+        </div>
       )}
     </div>
   );

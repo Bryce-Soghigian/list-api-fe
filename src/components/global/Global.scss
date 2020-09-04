@@ -1,9 +1,10 @@
 @mixin item-div-class() {
   display: flex;
-  width: 75vw;
+  width: 45vw;
   margin: 1%;
   align-items: center;
   justify-content: space-between;
+  text-align:center;
   border: 2px solid black;
   // clip-path: polygon(4% 0, 100% 0%, 94% 100%, 0% 100%);
   // color:white;
@@ -37,4 +38,35 @@
 .S {
   @include item-div-class();
   background-color: rgb(127, 255, 127);
+}
+
+
+
+.global-container{
+display:flex;
+width:75vh;
+background:white;
+border:2px black solid;
+}
+.right{
+width:50vw;
+}
+.left{
+  width:50vw;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.tier-big-bold{
+  font-size:5rem;
+}
+
+
+@media(min-width:700px){
+  .global-container{
+    width:110vw;
+    // background:blue;
+  }
+
 }
