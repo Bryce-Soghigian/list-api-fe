@@ -33,15 +33,15 @@ function App() {
       <div className="App">
         <Navbar />
         <Route exact path="/" component={Global} />
-        <PrivateRoute exact path="/watch" component={AnimeToWatchHome} />
-        <PrivateRoute exact path="/watchadd" component={AddNewShowToWatch} />
-
-        <PrivateRoute exact path="/update" component={UpdateShow} />
-        <PrivateRoute exact path="/new" component={AddAnime} />
+        <Route exact path="/Main" component={Main} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={Signup} />
+        <PrivateRoute exact path="/watch" component={AnimeToWatchHome} />
+        <PrivateRoute exact path="/watchadd" component={AddNewShowToWatch} />
+        <PrivateRoute exact path="/update" component={UpdateShow} />
+        <PrivateRoute exact path="/new" component={AddAnime} />
         <PrivateRoute exact path="/CurrentFriend" component={CurrentFriend} />
-        <Route exact path="/Main" component={Main} />
+
         <PrivateRoute exact path="/friends" component={FriendsHome} />
       </div>
     </UserContext.Provider>
