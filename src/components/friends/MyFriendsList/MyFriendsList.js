@@ -15,11 +15,10 @@ export default function MyFriendsList() {
         let new_data = [];
         let set = new Set();
         res.data.map(x => {
-          if (set.has(x.my_username)) {
-            console.log("exists");
-          } else {
+          if (set.has(x.my_username) === false) {
             set.add(x.my_username);
             new_data.push(x);
+
           }
         });
         dispatch({ type: "fetch_users_friends", payload: new_data });
@@ -28,7 +27,7 @@ export default function MyFriendsList() {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [dispatch,state.user.user_id]);
 
   if (state.friendsList !== null) {
     return (

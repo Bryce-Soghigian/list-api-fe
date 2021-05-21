@@ -9,12 +9,12 @@ export default function WatchListRenderer() {
     return (
       <div>
         {state.watchList.map(watchItem => {
-          console.log(watchItem);
           if (watchItem.list_item !== "") {
             return (
               <Item status={watchItem.status} listItem={watchItem.list_item} />
             );
           }
+          return ""
         })}
       </div>
     );

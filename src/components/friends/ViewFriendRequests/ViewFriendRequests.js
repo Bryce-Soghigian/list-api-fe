@@ -17,6 +17,7 @@ export default function ViewFriendRequests() {
           if (x.status === "pending") {
             filtered_arr.push(x);
           }
+          return
         });
         setFriends(filtered_arr);
         setError(false);

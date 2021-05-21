@@ -20,25 +20,21 @@ export default function SearchForFriends() {
         }
       });
     }
-
     setMatch(match_arr);
   };
-  const getUsers = () => {
-    axios
-      .get("https://anime-list-api.herokuapp.com/user/")
-      .then(res => {
-        setError(false);
-        dispatch({ type: "fetching_user_data", payload: res.data });
-      })
-      .catch(err => {
-        console.error(err);
-        setError("ERROR");
-      });
-  };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+useEffect(() => {
+  axios
+  .get("https://anime-list-api.herokuapp.com/user/")
+  .then(res => {
+    setError(false);
+    dispatch({ type: "fetching_user_data", payload: res.data });
+  })
+  .catch(err => {
+    console.error(err);
+    setError("ERROR");
+  });
+}, [])
   if (error === false && state.userList !== null) {
     return (
       <div>

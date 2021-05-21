@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Listitem from "./Listitem";
 import "./main.css";
@@ -45,6 +45,7 @@ export default function Home() {
           if (item.rating === "F") {
             F.push(item);
           }
+          return
         });
         let cur_state = Array.from(S.concat(A, B, C, D, F));
         setLocal(cur_state);
@@ -76,6 +77,7 @@ export default function Home() {
       if (e.target.value === "all") {
         new_state.push(x);
       }
+      return
     });
 
     setSorted(new_state);

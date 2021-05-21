@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../../contexts/contexts";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import Axios from "axios";
 import * as Swal from "sweetalert2";
 import "./Main.css";
@@ -9,7 +7,7 @@ export default function FriendRequestItem(props) {
   const [error, setError] = useState("");
   const [statusAccept, setStatusAccept] = useState("Accept Request");
   const [statusDelete, setStatusDelete] = useState("Deny Request");
-  const { history } = useHistory();
+
   const UpdateFriendRequest = () => {
     Axios.put(`https://anime-list-api.herokuapp.com/friend/${props.state.id}`, {
       status: "accepted",
@@ -23,7 +21,7 @@ export default function FriendRequestItem(props) {
       })
       .catch(err => {
         Swal.fire("Failed To Accept!", "error");
-        console.log(err);
+        console.log(err,error);
         setError(JSON.stringify(err));
       });
   };

@@ -17,7 +17,7 @@ export default function AnimeToWatchHome() {
         dispatch({ type: "myWatchList", payload: res.data });
       })
       .catch(err => {});
-  }, []);
+  }, [dispatch,state.user.user_id]);
   if (state.watchList === null) {
     return (
       <div>

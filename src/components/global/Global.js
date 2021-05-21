@@ -16,12 +16,11 @@ export default function Global() {
         let new_data = [];
         let set = new Set();
         res.data.map(x => {
-          if (set.has(x.listItem)) {
-            console.log("exists");
-          } else {
+          if (set.has(x.listItem)===false) {
             set.add(x.listItem);
             new_data.push(x);
           }
+          return
         });
         setTierState(new_data);
       })
